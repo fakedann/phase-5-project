@@ -16,6 +16,16 @@ function App() {
     setUser
   }
 
+  console.log(user)
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((resp) => setUser(resp));
+      }
+    });
+
+  }, []);
+
 
   return (
     <MyContext.Provider value={value}>

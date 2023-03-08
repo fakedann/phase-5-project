@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import {MyContext} from "./App"
+import GooglePayButton from '@google-pay/button-react';
 
 function Login() {
 
@@ -18,7 +19,7 @@ function Login() {
         <h6>{user.email}</h6>
         <p>{user.address}</p>
         <div className="buttons">
-          <button className="primary" onClick={() => setUser('NADA')}>
+          <button className="primary" onClick={() => handleLogoutClick()}>
             Logout
           </button>
         </div>
@@ -27,6 +28,7 @@ function Login() {
   );
 
   function handleLogoutClick() {
+    console.log('clicking')
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);

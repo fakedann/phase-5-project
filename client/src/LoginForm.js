@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {MyContext} from "./App"
 
 function LoginForm() {
 
@@ -7,6 +8,7 @@ function LoginForm() {
     password: '',
   });
   const [errors, setErrors] = useState([]);
+  const {user, setUser} = useContext(MyContext)
 
   function handleChange(event) {
     const name = event.target.name;
@@ -28,7 +30,7 @@ function LoginForm() {
       body: JSON.stringify(formData),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => console.log(user));
+        r.json().then((resp) => setUser(resp));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

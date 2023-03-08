@@ -8,10 +8,8 @@ function Browse(){
 
   return (
     <div>
-      <button color="secondary" onClick={() => setUser('jose')}>
-                Testuser
-      </button>
-      <p>hola {user}</p>
+      {user ? 
+      <p>hola {user.fullname}</p> : <p>nada</p>}
     </div>
 
     

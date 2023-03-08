@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {MyContext} from "./App"
 
 function SignUpForm(){
 
@@ -9,6 +10,7 @@ function SignUpForm(){
       address: ''
     });
     const [errors, setErrors] = useState([]);
+    const {user, setUser} = useContext(MyContext)
   
   
     function handleChange(event) {
@@ -46,7 +48,7 @@ function SignUpForm(){
       body: JSON.stringify(formData),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => console.log(user) );
+        r.json().then((resp) => setUser(resp) );
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
