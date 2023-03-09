@@ -7,6 +7,7 @@ import GooglePayButton from '@google-pay/button-react';
 function Login() {
 
   const [showLogin, setShowLogin] = useState(true);
+  const [checkToken, setToken] = useState('')
   const {user, setUser} = useContext(MyContext)
   console.log(user)
   
@@ -19,9 +20,49 @@ function Login() {
         <h6>{user.email}</h6>
         <p>{user.address}</p>
         <div className="buttons">
+          <img id="testImg" src={user.image_url} alt="waiting for something"/>
           <button className="primary" onClick={() => handleLogoutClick()}>
             Logout
           </button>
+          <GooglePayButton
+  environment="TEST"
+  paymentRequest={{
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['MASTERCARD', 'VISA'],
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+            gatewayMerchantId: 'exampleGatewayMerchantId',
+          },
+        },
+      },
+    ],
+    merchantInfo: {
+      merchantId: '12345678901234567890',
+      merchantName: 'Demo Merchant',
+    },
+    transactionInfo: {
+      totalPriceStatus: 'FINAL',
+      totalPriceLabel: 'Total',
+      totalPrice: '100.00',
+      currencyCode: 'USD',
+      countryCode: 'US',
+    },
+    shippingAddressRequired: true
+  }}
+  onLoadPaymentData={paymentRequest => {
+    console.log(paymentRequest.shippingAddress);
+    setToken(paymentRequest.shippingAddress.address1)
+  }}
+/>
         </div>
       </div>
     </div>
@@ -29,6 +70,15 @@ function Login() {
 
   function handleLogoutClick() {
     console.log('clicking')
+    // console.log(checkToken)
+
+    // fetch(`/checktoken/${checkToken}`).then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((resp) => console.log(resp));
+    //   }
+    // });
+
+
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
