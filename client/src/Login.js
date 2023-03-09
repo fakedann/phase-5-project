@@ -13,18 +13,16 @@ function Login() {
   
 
   if (user) return (
-    <div className="welcomeDiv">
-      <h2>WELCOME</h2>
-      <div className="card-container">
-        <h3>{user.fullname}</h3>
-        <h6>{user.email}</h6>
-        <p>{user.address}</p>
-        <div className="buttons">
-          <img id="testImg" src={user.image_url} alt="waiting for something"/>
-          <button className="primary" onClick={() => handleLogoutClick()}>
-            Logout
-          </button>
-          <GooglePayButton
+    <div className="welcomeCard">
+      <img src={user.image_url} alt="Waiting" />
+      <h1>{user.fullname}</h1>
+      <p className="title">{user.address}</p>
+      <p>{user.email}</p>
+      <p><button id="welcomeBut" onClick={handleLogoutClick}>Logout</button></p>
+    </div>
+  );
+
+   {/* <GooglePayButton
   environment="TEST"
   paymentRequest={{
     apiVersion: 2,
@@ -62,11 +60,7 @@ function Login() {
     console.log(paymentRequest.shippingAddress);
     setToken(paymentRequest.shippingAddress.address1)
   }}
-/>
-        </div>
-      </div>
-    </div>
-  );
+/> */}
 
   function handleLogoutClick() {
     console.log('clicking')

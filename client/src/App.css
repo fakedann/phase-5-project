@@ -45,3 +45,40 @@ html {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.welcomeCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  background-color: white;
+}
+
+.title {
+  color: rgb(128, 128, 128);
+  font-size: 18px;
+}
+
+#welcomeBut {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.welcomeCard img {
+  width: 300px;
+  height: 300px;
+}
