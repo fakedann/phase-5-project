@@ -32,7 +32,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route exact path="/" element={<Login />}/>
-          <Route exact path="/test" element={<Browse />}/>
+          <Route exact path="/browse" element={<Browse />}/>
         </Routes>
     </div>
   </MyContext.Provider>
