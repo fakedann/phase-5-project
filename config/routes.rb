@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"
-  get "/lastfive", to: "films#last_five"
+  get "/filterbrowse/:flt", to: "films#filter_browse"
 end
