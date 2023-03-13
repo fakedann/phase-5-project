@@ -7,6 +7,7 @@ function NavBar(){
       <ul>
         <Link to="/">Home</Link>
         <Link to="/browse">Browse</Link>
+        <Link to="/cart">Cart</Link>
       </ul>
     </nav>
   )

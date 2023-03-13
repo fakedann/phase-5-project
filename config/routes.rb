@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"
   get "/filterbrowse/:flt", to: "films#filter_browse"
+  post "/createcart", to: "films#create_cart"
+  post "/testcart", to: "films#test_cart"
+  post "/testpurchase", to: "purchases#test_transaction"
+  post "/payment", to: "purchases#payment"
 end

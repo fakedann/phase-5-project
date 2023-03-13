@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {MyContext} from "./App"
 
 function FilmCardCreator( film ){
+
+  const {cart, setCart} = useContext(MyContext)
 
 
   return (
@@ -20,13 +23,18 @@ function FilmCardCreator( film ){
   <div className="control">
     
  
-    <button className="btn">
+    <button id={film.id} className="btn" onClick={ (e) => {
+      let copyCart = [...cart, e.target.parentNode.id]
+      setCart([...cart, e.target.parentNode.id])
+      console.log(copyCart)
+      localStorage.setItem("cart", JSON.stringify(copyCart))
+    }}>
  
      <span className="price">${film.price}</span>
   
      <span className="shopping-cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i></span>
  
-     <span className="buy">Buy Now</span>
+     <span className="buy">Add to Cart</span>
    </button>
    
     

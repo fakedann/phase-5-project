@@ -4,12 +4,11 @@ import {MyContext} from "./App"
 
 function Browse(){
 
-  const {user, setUser} = useContext(MyContext)
-  const [films, setFilms] = useState(null)
+  const {films, setFilms, cart} = useContext(MyContext)
   const [filterView, setView] = useState('1')
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    console.log('inside')
     fetch(`/filterbrowse/${filterView}`).then((r) => {
       if (r.ok) {
         r.json().then((resp) => setFilms(resp));
@@ -18,7 +17,24 @@ function Browse(){
 
   }, [filterView]);
 
-  console.log(filterView)
+  console.log(cart)
+
+  function testCart(){
+    
+    fetch("/testcart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({cart: cart}),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((resp) => console.log(resp));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
 
   return (
     <div>
@@ -32,6 +48,7 @@ function Browse(){
         </select>
       </div>
       {films ? <div className="filmContainer">{ films.map( filmObj => FilmCardCreator(filmObj))}</div>: <p>nada</p> }
+      <button onClick={testCart}>CHECK CART</button>
 
     </div>
 
