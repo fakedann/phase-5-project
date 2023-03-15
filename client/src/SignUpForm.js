@@ -12,6 +12,7 @@ function SignUpForm(){
     const [avat, setAvat] = useState(null)
     const [errors, setErrors] = useState([]);
     const {user, setUser} = useContext(MyContext)
+    console.log('hola')
   
   
     function handleChange(event) {
