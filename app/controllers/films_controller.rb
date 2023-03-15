@@ -4,6 +4,8 @@ class FilmsController < ApplicationController
   def filter_browse
     if params[:flt] == "1"
       films = Film.last(5)
+    elsif params[:flt] == "2"
+      films = Film.avg
     elsif params[:flt] == "4"
       films = Film.all
     end
@@ -22,9 +24,8 @@ class FilmsController < ApplicationController
   end
 
   def test_cart
-    hola = []
-    params[:cart].map { |obj| hola << obj}
-    render json: hola
+    films = Film.avg
+    render json: films
   end
 
 

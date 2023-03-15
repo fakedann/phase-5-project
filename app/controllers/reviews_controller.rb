@@ -2,12 +2,12 @@ class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   skip_before_action :authorized, only: [:avg, :index]
 
-  def avg
-    film = Film.find_by(title: "Persona")
-    reviews = film.reviews
-    av = reviews.average(:score).to_f.round(2)
-    render json: av
-  end
+  # def avg
+  #   film = Film.find_by(title: "Persona")
+  #   reviews = film.reviews
+  #   av = reviews.average(:score).to_f.round(2)
+  #   render json: av
+  # end
 
   def index
     reviews = Review.all
