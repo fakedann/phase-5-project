@@ -9,7 +9,7 @@
 
 User.destroy_all
 Film.destroy_all
-# Rate.destroy_all
+Rate.destroy_all
 
 
 films = Film.create!([
