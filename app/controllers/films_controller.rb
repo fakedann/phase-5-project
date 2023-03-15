@@ -5,7 +5,7 @@ class FilmsController < ApplicationController
     if params[:flt] == "1"
       films = Film.last(5)
     elsif params[:flt] == "2"
-      films = Film.avg
+      films = Film.all
     elsif params[:flt] == "4"
       films = Film.all
     end
