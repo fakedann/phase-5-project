@@ -103,14 +103,14 @@ function SignUpForm(){
                   value={formData.address}
                 />
               </div>
-              {/* <div className="formElement">
+              <div className="formElement">
                 <label>Profile Picture:</label>
                 <input
                   type="file"
                   name="image"
                   onChange={(e) => setAvat(e.target.files[0])}
                 />
-              </div> */}
+              </div>
               <button id="submit" type="submit">Submit</button>
               <div>{errors.map((err) => (
                 <p key={err}>{err}</p>

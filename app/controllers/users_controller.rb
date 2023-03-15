@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password, :fullname, :address)
+      params.require(:user).permit(:email, :password, :fullname, :image, :address)
     end
 
     def render_unprocessable_entity(invalid)
