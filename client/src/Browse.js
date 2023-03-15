@@ -4,7 +4,7 @@ import {MyContext} from "./App"
 
 function Browse(){
 
-  const {films, setFilms, cart} = useContext(MyContext)
+  const {films, setFilms, cart, user} = useContext(MyContext)
   const [filterView, setView] = useState('1')
   const [errors, setErrors] = useState([]);
 
@@ -16,8 +16,6 @@ function Browse(){
     });
 
   }, [filterView]);
-
-  console.log(cart)
 
   function testCart(){
     
@@ -35,6 +33,8 @@ function Browse(){
       }
     });
   }
+
+  if (!user) return <p>Please, log in first.</p>
 
   return (
     <div>

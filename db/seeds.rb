@@ -11,13 +11,6 @@ User.destroy_all
 Film.destroy_all
 Review.destroy_all
 
-user = User.create!({
-  fullname: "Daniel Escalona",
-  email: "daniel07escalona@gmail.com",
-  password: "123456",
-  address: "4924 NW 28TH PL",
-
-})
 
 films = Film.create!([
 {
@@ -93,29 +86,29 @@ films = Film.create!([
 
 
 
-reviews = Review.create!([
-  {
-    user_id: User.first.id,
-    film_id: films[2].id,
-    comments: "Awesome shit man!!!!!",
-    score: 5
-  },
-  {
-    user_id: User.first.id,
-    film_id: films[2].id,
-    comments: "Awesome shit man!!!!!",
-    score: 4
-  },
-  {
-    user_id: User.first.id,
-    film_id: films[2].id,
-    comments: "Awesome shit man!!!!!",
-    score: 3
-  },
-  {
-    user_id: User.first.id,
-    film_id: films[2].id,
-    comments: "Awesome shit man!!!!!",
-    score: 5
-  }
-])
+# reviews = Review.create!([
+#   {
+#     user_id: User.first.id,
+#     film_id: films[2].id,
+#     comments: "Awesome shit man!!!!!",
+#     score: 5
+#   },
+#   {
+#     user_id: User.first.id,
+#     film_id: films[2].id,
+#     comments: "Awesome shit man!!!!!",
+#     score: 4
+#   },
+#   {
+#     user_id: User.first.id,
+#     film_id: films[2].id,
+#     comments: "Awesome shit man!!!!!",
+#     score: 3
+#   },
+#   {
+#     user_id: User.first.id,
+#     film_id: films[2].id,
+#     comments: "Awesome shit man!!!!!",
+#     score: 5
+#   }
+# ])

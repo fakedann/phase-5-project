@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :purchases
   has_many :reviews
 
-  validates :email, :password, :fullname, :address, presence: true
+  validates :email, :password, :fullname, :address, :image, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6}
 end
