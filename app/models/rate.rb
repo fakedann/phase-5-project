@@ -1,4 +1,4 @@
-class Review < ApplicationRecord
+class Rate < ApplicationRecord
   belongs_to :film
   belongs_to :user
 

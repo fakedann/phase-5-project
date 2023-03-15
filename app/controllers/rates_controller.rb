@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class RatesController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   skip_before_action :authorized, only: [:avg, :index]
 
@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   # end
 
   def index
-    reviews = Review.all
+    reviews = Rate.all
     render json: reviews
   end
 
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:user_id, :film_id, :comments, :score)
+      params.require(:rate).permit(:user_id, :film_id, :comments, :score)
     end
 
     def render_not_found_response
