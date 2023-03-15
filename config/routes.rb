@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
 
   resources :users
+  resources :films
+  resources :reviews
 
 
   post "/signup", to: "users#create"
@@ -17,4 +19,5 @@ Rails.application.routes.draw do
   post "/testcart", to: "films#test_cart"
   post "/testpurchase", to: "purchases#test_transaction"
   post "/payment", to: "purchases#payment"
+  get "/avg", to: "reviews#avg"
 end

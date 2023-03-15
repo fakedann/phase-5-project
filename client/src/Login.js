@@ -24,19 +24,11 @@ function Login() {
 
 
   function handleLogoutClick() {
-    console.log('clicking')
-    // console.log(checkToken)
-
-    // fetch(`/checktoken/${checkToken}`).then((r) => {
-    //   if (r.ok) {
-    //     r.json().then((resp) => console.log(resp));
-    //   }
-    // });
-
 
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
+        localStorage.removeItem("cart")
       }
     });
   }

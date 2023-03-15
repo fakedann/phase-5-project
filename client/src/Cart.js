@@ -51,6 +51,15 @@ function Cart(){
       }
     });
   }
+
+  function deleteCartItem(e){
+    console.log(e.target.parentNode.parentNode.id)
+    const newCart = cart.filter( (obj) => obj !== e.target.parentNode.parentNode.id)
+    console.log(newCart)
+    localStorage.setItem("cart", JSON.stringify(newCart))
+    setCart(newCart)
+
+  }
  
     
     if(!user){
@@ -72,9 +81,9 @@ function Cart(){
                     let film = films.find( obj => obj.id === parseInt(filmObj))
                     if (film){
                       total.push(film.price)
-                      return <tr key={film.id}>
+                      return <tr key={film.id} id={film.id}>
                             <td>{film.title}</td>
-                            <td>${film.price}</td>
+                            <td>${film.price}<button className="deleteCartBtn" onClick={deleteCartItem}>X</button></td>
                           </tr>
                     }
                   })}

@@ -26,7 +26,6 @@ function FilmCardCreator( film ){
     <button id={film.id} className="btn" onClick={ (e) => {
       let copyCart = [...cart, e.target.parentNode.id]
       setCart([...cart, e.target.parentNode.id])
-      console.log(copyCart)
       localStorage.setItem("cart", JSON.stringify(copyCart))
     }}>
  
