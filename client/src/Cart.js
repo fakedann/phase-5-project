@@ -13,19 +13,21 @@ function Cart(){
   console.log(films)
   
   useEffect( () => {
-    fetch("/createcart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({cart: cart}),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((resp) => setFilms(resp));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+    if(user){
+      fetch("/createcart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({cart: cart}),
+      }).then((r) => {
+        if (r.ok) {
+          r.json().then((resp) => setFilms(resp));
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
+    }
   }, [user, cart])
 
 

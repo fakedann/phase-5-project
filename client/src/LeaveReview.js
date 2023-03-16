@@ -1,8 +1,10 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useContext } from "react";
 import CreateRate from "./CreateRate";
+import {MyContext} from "./App"
 
 function LeaveReview(){
 
+  const {user} = useContext(MyContext)
   const [search, setSearch] = useState('')
   const [film, setFilm] = useState(undefined)
   const [errors, setErrors] = useState(['']);
@@ -19,8 +21,9 @@ function LeaveReview(){
     });
   }
 
+  if(!user) return <p>Please, log in first.</p>
+
   if (film){
-    console.log(film)
     return <CreateRate film={film}/>
   }
 

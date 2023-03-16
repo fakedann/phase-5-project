@@ -9,11 +9,13 @@ function Browse(){
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
+   if(user){
     fetch(`/filterbrowse/${filterView}`).then((r) => {
       if (r.ok) {
         r.json().then((resp) => setFilms(resp));
       }
     });
+   }
 
   }, [filterView]);
 

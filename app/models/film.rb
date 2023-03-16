@@ -4,10 +4,8 @@ class Film < ApplicationRecord
 
   validates :title, :genre, :year, :director, :runtime, :price, :description, :poster, presence: true
 
-  def self.avg
-    film = Film.find_by(title: "Persona")
-    reviews = film.reviews
-    av = reviews.average(:score).to_f.round(2)
+  def ave
+    total = self.rates.average(:score).to_f.round(2)
   end
 
 

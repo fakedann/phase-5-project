@@ -12,7 +12,7 @@ class PurchasesController < ApplicationController
       end
       render json: transactions
     else
-      render json: "mistake"
+      render json: {errors: "error"}
     end
 
   end

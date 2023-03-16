@@ -5,8 +5,20 @@ class FilmsController < ApplicationController
     if params[:flt] == "1"
       films = Film.last(5)
     elsif params[:flt] == "2"
-      films = Film.all
-    elsif params[:flt] == "4"
+      low = Film.all
+      films = low.filter do |obj|
+        if obj.ave < 4
+          obj
+        end
+      end
+    elsif params[:flt] == "3"
+      high = Film.all
+      films = high.filter do |obj|
+        if obj.ave >= 4
+          obj
+        end
+      end
+    else
       films = Film.all
     end
     render json: films, status: :created
