@@ -1,5 +1,5 @@
 class FilmsController < ApplicationController
-
+  skip_before_action :authorized, only: [:index]
 
   def filter_browse
     if params[:flt] == "1"
@@ -23,10 +23,19 @@ class FilmsController < ApplicationController
     render json: films
   end
 
-  def test_cart
-    films = Film.avg
+  def index
+    films = Film.all
     render json: films
   end
 
+  def search
+    minuscula = params[:film].downcase
+    film = Film.find_by("LOWER(title) =  ?", minuscula)
+    if film
+      render json: film
+    else
+      render json: {errors: "error"}, status: :not_found
+    end
+  end
 
 end

@@ -11,6 +11,16 @@ User.destroy_all
 Film.destroy_all
 Rate.destroy_all
 
+user = User.new({
+  fullname: "Daniel Escalona",
+  email: "daniel07escalona@gmail.com",
+  password: "123456",
+  address: "4924 NW 28TH PL",
+
+})
+user.image.attach(io: File.open('/Users/danielescalona/Downloads/bluetest.jpeg'), filename: 'bluetest.jpeg' )
+user.save
+
 
 films = Film.create!([
 {
@@ -86,29 +96,29 @@ films = Film.create!([
 
 
 
-# reviews = Review.create!([
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 5
-#   },
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 4
-#   },
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 3
-#   },
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 5
-#   }
-# ])
+rates = Rate.create!([
+  {
+    user_id: User.first.id,
+    film_id: films[2].id,
+    comments: "Awesome shit man!!!!!",
+    score: 5
+  },
+  {
+    user_id: User.first.id,
+    film_id: films[2].id,
+    comments: "Awesome shit man!!!!!",
+    score: 4
+  },
+  {
+    user_id: User.first.id,
+    film_id: films[2].id,
+    comments: "Awesome shit man!!!!!",
+    score: 3
+  },
+  {
+    user_id: User.first.id,
+    film_id: films[2].id,
+    comments: "Awesome shit man!!!!!",
+    score: 5
+  }
+])

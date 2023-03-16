@@ -5,7 +5,6 @@ function FilmCardCreator( film ){
 
   const {cart, setCart} = useContext(MyContext)
 
-
   return (
     <div id="container" key={film.id}>	
 	
@@ -14,6 +13,7 @@ function FilmCardCreator( film ){
       
       
     <h1>{film.title}</h1>
+    <h4>Rating: {film.avg}</h4>
   
       <p className="information">{film.description}</p>
   

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   has_one_attached :image
   has_many :purchases
-  has_many :reviews
+  has_many :rates
 
   validates :email, :password, :fullname, :address, :image, presence: true
   validates :email, uniqueness: true

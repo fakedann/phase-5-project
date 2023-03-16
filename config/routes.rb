@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   post "/testcart", to: "films#test_cart"
   post "/testpurchase", to: "purchases#test_transaction"
   post "/payment", to: "purchases#payment"
-  get "/avg", to: "reviews#avg"
+  get "/avg", to: "rates#avg"
+  get "/searchfilm/:film", to: "films#search"
+  post "/createrate", to: "rates#create"
 end
