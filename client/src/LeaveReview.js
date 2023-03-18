@@ -21,10 +21,15 @@ function LeaveReview(){
     });
   }
 
+  function goBack(){
+    setSearch('')
+    setFilm(undefined)
+  }
+
   if(!user) return <p>Please, log in first.</p>
 
   if (film){
-    return <CreateRate film={film}/>
+    return <CreateRate film={film} goBack={goBack}/>
   }
 
 

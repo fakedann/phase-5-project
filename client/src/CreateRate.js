@@ -1,13 +1,16 @@
 import React, { useState, createContext } from "react";
+import LeaveReview from "./LeaveReview";
 
-function CreateRate( film ){
+function CreateRate( {film, goBack} ){
   
+  console.log(film)
   const [rate, setRate] = useState({
     score: '1',
     comments: '',
-    filmid: film.film.id
+    filmid: film.id
   });
   const [errors, setErrors] = useState(['']);
+  const [succes, setSuccess] = useState(undefined)
 
 
   function handleSubmit(e){
@@ -20,21 +23,35 @@ function CreateRate( film ){
       body: JSON.stringify(rate),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((resp) => console.log(resp));
+        r.json().then((resp) => setSuccess(resp));
       } else {
         r.json().then((err) => console.log(err.errors));
       }
     });
   }
 
+  function back(){
+    goBack()
+  }
+
+
+  if(succes){
+    return (
+      <div>
+        <p>Your rating has been succesfully created!</p>
+        <button onClick={back}>OK</button>
+      </div>
+    )
+  }
+
   return (
     <div className="createDiv">
 
       <div className="welcomeCard">
-        <img src={film.film.poster} alt="Waiting" />
-        <h1>{film.film.title}</h1>
-        <p className="title">{film.film.director}</p>
-        <p>{film.film.year}</p>
+        <img src={film.poster} alt="Waiting" />
+        <h1>{film.title}</h1>
+        <p className="title">{film.director}</p>
+        <p>{film.year}</p>
       </div>
 
 

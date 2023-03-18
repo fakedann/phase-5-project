@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :films
-  resources :reviews
+  resources :rates
+  resources :purchases
 
 
   post "/signup", to: "users#create"

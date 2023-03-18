@@ -7,10 +7,9 @@ function Cart(){
   const {cart, setCart, user} = useContext(MyContext)
   const [films, setFilms] = useState([])
   const [errors, setErrors] = useState(['empty']);
+  const [success, setSuccess] = useState(undefined)
 
   const total = []
-  console.log(cart)
-  console.log(films)
   
   useEffect( () => {
     if(user){
@@ -45,8 +44,7 @@ function Cart(){
       if (r.ok) {
         r.json().then((resp) => {
           console.log(resp)
-          localStorage.removeItem("cart")
-          setCart([])
+          setSuccess(resp)
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -62,10 +60,25 @@ function Cart(){
     setCart(newCart)
 
   }
+
+  function clearPage(){
+    setSuccess(undefined)
+    localStorage.removeItem("cart")
+    setCart([])
+  }
  
     
     if(!user){
       return <p>plEASE LOG IN FIRST</p>
+    }
+
+    if(success){
+      return (
+        <div>
+        <p>Your payment has been succesfully submitted! Thank you so much!</p>
+        <button onClick={clearPage}>OK</button>
+      </div>
+      )
     }
 
 

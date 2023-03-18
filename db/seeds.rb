@@ -10,6 +10,7 @@
 User.destroy_all
 Film.destroy_all
 Rate.destroy_all
+Purchase.destroy_all
 
 # user = User.new({
 #   fullname: "Daniel Escalona",

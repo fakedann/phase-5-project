@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+  skip_before_action :authorized, only: [:index]
 
   def payment
     transactions = []
@@ -15,6 +16,11 @@ class PurchasesController < ApplicationController
       render json: {errors: "error"}
     end
 
+  end
+
+  def index
+    purc = Purchase.all
+    render json: purc
   end
 
 

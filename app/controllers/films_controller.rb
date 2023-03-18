@@ -46,7 +46,7 @@ class FilmsController < ApplicationController
     if film
       render json: film
     else
-      render json: {errors: "error"}, status: :not_found
+      render json: {errors: "A film with that name does not exist. Please, try again."}, status: :not_found
     end
   end
 

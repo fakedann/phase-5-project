@@ -58,7 +58,7 @@ function SignUpForm(){
       if (r.ok) {
         r.json().then((resp) => setUser(resp) );
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => console.log(err));
       }
     });
     }
@@ -112,9 +112,9 @@ function SignUpForm(){
                 />
               </div>
               <button id="submit" type="submit">Submit</button>
-              <div>{errors.map((err) => (
+              {/* <div>{errors.map((err) => (
                 <p key={err}>{err}</p>
-              ))}</div>
+              ))}</div> */}
             </form>
         </div>
       </div>  
