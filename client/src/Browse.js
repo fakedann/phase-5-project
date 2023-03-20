@@ -9,6 +9,7 @@ function Browse(){
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
+    console.log(`aqui adentro d effect ${user}`)
    if(user){
     fetch(`/filterbrowse/${filterView}`).then((r) => {
       if (r.ok) {
@@ -17,24 +18,8 @@ function Browse(){
     });
    }
 
-  }, [filterView]);
+  }, [filterView, user]);
 
-  function testCart(){
-    
-    fetch("/testcart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({cart: cart}),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((resp) => console.log(resp));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
-  }
 
   if (!user) return <p>Please, log in first.</p>
 
@@ -50,7 +35,6 @@ function Browse(){
         </select>
       </div>
       {films ? <div className="filmContainer">{ films.map( filmObj => FilmCardCreator(filmObj))}</div>: <p>nada</p> }
-      <button onClick={testCart}>CHECK CART</button>
 
     </div>
 

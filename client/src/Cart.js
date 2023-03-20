@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import {MyContext} from "./App"
 import GooglePayButton from '@google-pay/button-react';
+import uuid from 'react-uuid';
 
 function Cart(){
 
@@ -54,10 +55,18 @@ function Cart(){
 
   function deleteCartItem(e){
     console.log(e.target.parentNode.parentNode.id)
-    const newCart = cart.filter( (obj) => obj !== e.target.parentNode.parentNode.id)
-    console.log(newCart)
-    localStorage.setItem("cart", JSON.stringify(newCart))
-    setCart(newCart)
+    let flag = 0
+    let i = 0
+    while (flag === 0){
+      if (cart[i] === e.target.parentNode.parentNode.id){
+        delete cart[i]
+        flag = 1
+      }
+      i++
+    }
+    // console.log(newCart)
+    localStorage.setItem("cart", JSON.stringify(cart))
+    setCart([...cart])
 
   }
 
@@ -95,8 +104,9 @@ function Cart(){
                   {cart.map( filmObj => {
                     let film = films.find( obj => obj.id === parseInt(filmObj))
                     if (film){
-                      total.push(film.price)
-                      return <tr key={film.id} id={film.id}>
+                      let tax = film.price*0.07
+                      total.push(film.price+tax)
+                      return <tr key={uuid()} id={film.id}>
                             <td>{film.title}</td>
                             <td>${film.price}<button className="deleteCartBtn" onClick={deleteCartItem}>X</button></td>
                           </tr>
@@ -104,7 +114,7 @@ function Cart(){
                   })}
                   <tr>
                     <td>Total:</td>
-                    <td>${total.reduce((a, b) => a + b, 0)}</td>
+                    <td>${Number((total.reduce((a, b) => a + b, 0)).toFixed(2))}</td> 
                   </tr>
               
               </tbody>
