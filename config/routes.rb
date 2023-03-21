@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :films
   resources :rates
-  resources :purchases
+  # resources :purchases
 
 
   post "/signup", to: "users#create"
@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   get "/avg", to: "rates#avg"
   get "/searchfilm/:film", to: "films#search"
   post "/createrate", to: "rates#create"
+  get "/purchases/:flt", to: "purchases#history"
+  get "/purchases", to: "purchases#index"
 end

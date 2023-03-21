@@ -308,3 +308,22 @@ a {
 	margin-left: 10px;
 	border-radius: 50%;
 }
+
+#rates{
+	padding-left: 400px;
+	margin-bottom: 50px;
+	
+}
+
+.cardRates {
+	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 300px;
+	height: 150px;
+	background-color: white;
+	text-align: center;
+	border: solid;
+	border-color: black;
+	border-width: 4px;
+}

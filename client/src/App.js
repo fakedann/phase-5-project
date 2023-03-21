@@ -4,6 +4,7 @@ import React, { useEffect, useState, createContext } from "react";
 import Login from './Login';
 import Browse from './Browse';
 import Cart from './Cart';
+import History from './History';
 import LeaveReview from './LeaveReview';
 
 export const MyContext = createContext()
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/" element={<Login />}/>
           <Route exact path="/browse" element={<Browse />}/>
           <Route exact path="/cart" element={<Cart />}/>
+          <Route exact path="/history" element={<History />}/>
           <Route exact path="/review" element={<LeaveReview />}/>
         </Routes>
     </div>

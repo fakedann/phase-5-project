@@ -12,6 +12,11 @@ class RatesController < ApplicationController
     render json: rate
   end
 
+  def show
+    rates = Rate.where("film_id = ?", params[:id]).last(5)
+    render json: rates, include: [:user]
+  end 
+
 
   private
 

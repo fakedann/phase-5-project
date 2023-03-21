@@ -18,6 +18,16 @@ class PurchasesController < ApplicationController
 
   end
 
+  def history
+    user = User.find_by(id: session[:user_id])
+    if params[:flt] == "1"
+      purch = Purchase.where("user_id = ?", user.id).last(5)
+    else
+      purch = user.purchases
+    end
+    render json: purch
+  end
+
   def index
     purc = Purchase.all
     render json: purc

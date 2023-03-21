@@ -1,17 +1,29 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import LeaveReview from "./LeaveReview";
 
 function CreateRate( {film, goBack} ){
   
   console.log(film)
+
+  useEffect( () => {
+    fetch(`/rates/${film.id}`).then((r) => {
+      if (r.ok) {
+        r.json().then((resp) => setFilmRates(resp));
+      }
+    });
+  }, [])
+
+
   const [rate, setRate] = useState({
     score: '1',
     comments: '',
     filmid: film.id
   });
   const [errors, setErrors] = useState(['']);
+  const [filmRates, setFilmRates] = useState([])
   const [succes, setSuccess] = useState(undefined)
 
+  console.log(filmRates)
 
   function handleSubmit(e){
     e.preventDefault()
@@ -25,13 +37,17 @@ function CreateRate( {film, goBack} ){
       if (r.ok) {
         r.json().then((resp) => setSuccess(resp));
       } else {
-        r.json().then((err) => console.log(err.errors));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }
 
   function back(){
     goBack()
+  }
+
+  function getRatings(){
+    
   }
 
 
@@ -78,6 +94,18 @@ function CreateRate( {film, goBack} ){
             </div>
         <button id="submitReview" type="submit">Submit</button>
        </form>
+       {errors[0]}
+       <p>Last 5 ratings for this film:</p>
+       <div id="rates">
+       { filmRates.map( rateObj => 
+         <div key={rateObj.id} className="cardRates">
+            <h4>By: {rateObj.user.fullname}</h4>
+            <p>- {rateObj.comments}</p>
+            <h4>Score: {rateObj.score}</h4>
+         </div>
+       )}
+        
+       </div>
     </div>
   )
 }
