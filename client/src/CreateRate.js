@@ -70,8 +70,6 @@ function CreateRate( {film, goBack} ){
         <p>{film.year}</p>
       </div>
 
-
-
       <form onSubmit={handleSubmit}>
         <div className="formElement">
           <label>Comments:</label>

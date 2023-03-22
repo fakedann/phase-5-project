@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get "/purchases/:flt", to: "purchases#history"
   get "/purchases", to: "purchases#index"
   get "/copies", to: "users#copies_bought"
+  patch "/updaterate", to: "rates#update"
 end

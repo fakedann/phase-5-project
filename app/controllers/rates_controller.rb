@@ -22,6 +22,20 @@ class RatesController < ApplicationController
     render json: rates
   end
 
+  def update
+    rate = Rate.find_by(id: params[:id])
+    if rate
+      if session[:user_id] == rate.user_id
+        rate.update!(score: params[:score], comments: params[:comments])
+        render json: rate, status: :created
+      else
+        render json: {error: "Unauthorized access. You are not the author for this rating"}, status: :not_found
+      end
+    else
+      render json: {error: "Rating not found"}, status: :not_found
+    end
+  end
+
 
   private
 
