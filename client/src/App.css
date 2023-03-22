@@ -327,3 +327,22 @@ a {
 	border-color: black;
 	border-width: 4px;
 }
+
+.historyCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+  margin: auto;
+  text-align: center;
+  background-color: white;
+	padding-bottom: 10px;
+	margin-bottom: 30px;
+}
+
+.historyCard img {
+	width: 250px;
+	height: 250px;
+}
+
+.historyCard button{
+	margin-left: 10px;
+}

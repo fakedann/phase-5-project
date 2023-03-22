@@ -1,5 +1,5 @@
 class RatesController < ApplicationController
-  skip_before_action :authorized, only: [:avg]
+  skip_before_action :authorized, only: [:index]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
   def create
@@ -16,6 +16,11 @@ class RatesController < ApplicationController
     rates = Rate.where("film_id = ?", params[:id]).last(5)
     render json: rates, include: [:user]
   end 
+
+  def index
+    rates = Rate.all
+    render json: rates
+  end
 
 
   private
