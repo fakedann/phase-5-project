@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :purchases
   has_many :rates
+  has_many :films, through: :purchases
 
   validates :email, :password, :fullname, :address, :image, presence: true
   validates :email, uniqueness: true

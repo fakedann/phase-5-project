@@ -33,6 +33,12 @@ class PurchasesController < ApplicationController
     render json: purc
   end
 
+  def copies_sold
+    user = User.find_by(id: session[:user_id])
+    copies = user.purchases.where("film_id = ?", params[:filmid])
+    render json: copies.count
+  end
+
 
 
   private

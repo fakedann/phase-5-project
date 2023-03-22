@@ -4,4 +4,6 @@ class FilmSerializer < ActiveModel::Serializer
   def avg
     total = self.object.rates.average(:score).to_f.round(2)
   end
+
+
 end

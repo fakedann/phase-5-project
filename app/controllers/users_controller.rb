@@ -24,6 +24,15 @@ class UsersController < ApplicationController
     render json: users, status: :created
   end
 
+  def copies_bought
+    user = User.find_by(id: session[:user_id])
+    copies = user.films.uniq.map do |obj|
+      cop = {copias: obj.purchases.where("user_id = ?", session[:user_id]).count}
+      results = obj.attributes.merge(cop)
+    end
+    render json: copies
+  end
+
   
 
   private

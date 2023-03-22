@@ -1,28 +1,25 @@
 import React, { useState, useContext, useEffect } from "react";
-import PurchasesHistory from "./PurchasesHistory";
 
 
 function History(){
 
-  const [view, setView] = useState('')
+  const [copies, setCopies] = useState([])
+  const created = []
 
-
-  if(view === 'purchases'){
-    return <PurchasesHistory goBack={goBack}/>
-  }else{
-    console.log('ratings maybe')
-  }
-
-
-  function goBack(){
-    setView('')
-  }
+  useEffect( () => {
+    fetch(`/copies`).then((r) => {
+      if (r.ok) {
+        r.json().then((resp) => console.log(resp));
+      }
+    });
+  }, [])
+  
 
   return (
     <div>
-      <button onClick={() => setView('purchases')}>Purchases</button>
-      <button onClick={() => setView('ratings')}>Ratings</button>
-      <p>Plese, select if you would like to see your purchases or ratings history.</p>
+      {/* {copies.map( filmObj => {
+        if(filmObj.id)
+      })} */}
     </div>
   )
 }

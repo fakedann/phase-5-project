@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   post "/createrate", to: "rates#create"
   get "/purchases/:flt", to: "purchases#history"
   get "/purchases", to: "purchases#index"
+  get "/copies", to: "users#copies_bought"
 end
