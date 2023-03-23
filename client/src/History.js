@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import DeleteRate from "./DeleteRate";
 import UpdateRate from "./UpdateRate";
 
 
@@ -24,8 +25,16 @@ function History(){
     console.log('updating')
     console.log(execOperation)
     return <UpdateRate rate={execOperation.film} goBack={setOperation}/>
-  }else if(execOperation === "delete"){
+  }else if(execOperation.operation === "delete"){
+    let film = copies.find( filmObj => {
+      if(filmObj.id === execOperation.film.film_id){
+        return filmObj
+      }else{
+        return null
+      }
+    })
     console.log('deleting')
+    return <DeleteRate rate={execOperation.film} goBack={setOperation} title={film.title}/>
   }
   
 

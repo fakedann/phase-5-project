@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   def payment
     transactions = []
     user = User.find_by(id: session[:user_id])
-
+    # byebug
     if params[:tok] == user.address
       params[:cart].map do |obj|
         transaction = Purchase.create!(film_id: obj, user_id: session[:user_id])

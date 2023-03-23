@@ -3,7 +3,6 @@ import LeaveReview from "./LeaveReview";
 
 function CreateRate( {film, goBack} ){
   
-  console.log(film)
 
   useEffect( () => {
     fetch(`/rates/${film.id}`).then((r) => {
@@ -19,11 +18,11 @@ function CreateRate( {film, goBack} ){
     comments: '',
     filmid: film.id
   });
-  const [errors, setErrors] = useState(['']);
+  const [errors, setErrors] = useState('');
   const [filmRates, setFilmRates] = useState([])
   const [succes, setSuccess] = useState(undefined)
 
-  console.log(filmRates)
+  console.log(errors)
 
   function handleSubmit(e){
     e.preventDefault()
@@ -92,7 +91,7 @@ function CreateRate( {film, goBack} ){
             </div>
         <button id="submitReview" type="submit">Submit</button>
        </form>
-       {errors[0]}
+       {errors}
        <p>Last 5 ratings for this film:</p>
        <div id="rates">
        { filmRates.map( rateObj => 

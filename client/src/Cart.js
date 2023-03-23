@@ -29,11 +29,13 @@ function Cart(){
       });
     }
   }, [user, cart])
+  console.log(cart)
 
 
   function sendingPayment(token){
     console.log('pagando')
     console.log(token)
+    console.log(cart)
     fetch("/payment", {
       method: "POST",
       headers: {

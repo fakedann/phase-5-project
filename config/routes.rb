@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   get "/purchases", to: "purchases#index"
   get "/copies", to: "users#copies_bought"
   patch "/updaterate", to: "rates#update"
+  delete "/rate/:id", to: "rates#destroy"
 end

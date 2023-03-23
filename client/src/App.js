@@ -24,6 +24,7 @@ function App() {
   }
 
   console.log(user)
+  // localStorage.removeItem("cart")
   useEffect(() => {
     localCart = JSON.parse(localCart);
     if (localCart) setCart(localCart)
