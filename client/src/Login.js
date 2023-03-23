@@ -28,7 +28,7 @@ function Login() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
-        localStorage.removeItem("cart")
+        localStorage.clear()
       }
     });
   }

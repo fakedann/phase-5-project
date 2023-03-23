@@ -74,7 +74,7 @@ function Cart(){
 
   function clearPage(){
     setSuccess(undefined)
-    localStorage.removeItem("cart")
+    localStorage.clear()
     setCart([])
   }
  
