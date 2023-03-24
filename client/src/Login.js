@@ -1,14 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import {MyContext} from "./App"
-import GooglePayButton from '@google-pay/button-react';
 
 function Login() {
 
+  const {user, setUser, setCart} = useContext(MyContext)
   const [showLogin, setShowLogin] = useState(true);
-  const [errors, setErrors] = useState([]);
-  const {user, setUser} = useContext(MyContext)
   console.log(user)
   
 
@@ -27,8 +25,10 @@ function Login() {
 
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
+        localStorage.removeItem("cart")
+        setCart([])
         setUser(null);
-        localStorage.clear()
+        
       }
     });
   }

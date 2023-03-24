@@ -10,8 +10,7 @@ import LeaveReview from './LeaveReview';
 export const MyContext = createContext()
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [films, setFilms] = useState([])
+  const [user, setUser] = useState(undefined);
   const [cart, setCart] = useState([])
   let localCart = localStorage.getItem("cart")
   const globalValues = {
@@ -19,12 +18,8 @@ function App() {
     setUser,
     cart,
     setCart,
-    films,
-    setFilms
   }
 
-  console.log(user)
-  // localStorage.removeItem("cart")
   useEffect(() => {
     localCart = JSON.parse(localCart);
     if (localCart) setCart(localCart)

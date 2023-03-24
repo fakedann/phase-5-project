@@ -9,4 +9,6 @@ class User < ApplicationRecord
   validates :email, :password, :fullname, :address, :image, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6}
+
+
 end

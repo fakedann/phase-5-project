@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import DeleteRate from "./DeleteRate";
 import UpdateRate from "./UpdateRate";
+import {MyContext} from "./App"
 
 
 function History(){
 
+  const {user} = useContext(MyContext)
   const [copies, setCopies] = useState([])
   const [execOperation, setOperation] = useState({
     operation: '',
@@ -21,9 +23,9 @@ function History(){
     
   }, [execOperation])
 
+  if(!user) return <p>Please, log in first.</p>
+
   if(execOperation.operation === 'update'){
-    console.log('updating')
-    console.log(execOperation)
     return <UpdateRate rate={execOperation.film} goBack={setOperation}/>
   }else if(execOperation.operation === "delete"){
     let film = copies.find( filmObj => {
@@ -33,7 +35,7 @@ function History(){
         return null
       }
     })
-    console.log('deleting')
+
     return <DeleteRate rate={execOperation.film} goBack={setOperation} title={film.title}/>
   }
   

@@ -11,7 +11,7 @@ function SignUpForm(){
     });
     const [avat, setAvat] = useState(null)
     const [errors, setErrors] = useState([]);
-    const {user, setUser} = useContext(MyContext)
+    const {setUser} = useContext(MyContext)
   
   
     function handleChange(event) {
@@ -34,7 +34,6 @@ function SignUpForm(){
 
         handleSubmit()
       }else{
-        // notvalid()
         setErrors(["One of your fields has at least one invalid character. Please, try again."])
       }
     }
@@ -48,9 +47,6 @@ function SignUpForm(){
       newUser.append("user[email]", formData.email)
       newUser.append("user[password]", formData.password)
 
-
-
-
     fetch("/signup", {
       method: "POST",
       body: newUser,
@@ -58,7 +54,7 @@ function SignUpForm(){
       if (r.ok) {
         r.json().then((resp) => setUser(resp) );
       } else {
-        r.json().then((err) => console.log(err));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
     }
@@ -112,9 +108,7 @@ function SignUpForm(){
                 />
               </div>
               <button id="submit" type="submit">Submit</button>
-              {/* <div>{errors.map((err) => (
-                <p key={err}>{err}</p>
-              ))}</div> */}
+              <p>{errors}</p>
             </form>
         </div>
       </div>  

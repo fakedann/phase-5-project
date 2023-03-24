@@ -4,16 +4,18 @@ import {MyContext} from "./App"
 
 function Browse(){
 
-  const {films, setFilms, cart, user} = useContext(MyContext)
+  const {user} = useContext(MyContext)
+  const [films, setFilms] = useState([])
   const [filterView, setView] = useState('1')
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    console.log(`aqui adentro d effect ${user}`)
    if(user){
     fetch(`/filterbrowse/${filterView}`).then((r) => {
       if (r.ok) {
         r.json().then((resp) => setFilms(resp));
+      }else {
+        r.json().then((err) => setErrors(err.errors));
       }
     });
    }
@@ -25,6 +27,7 @@ function Browse(){
 
   return (
     <div>
+      {errors}
       <div className="formElement">
         <label>Filter:</label>
         <select value={filterView} onChange={e => setView(e.target.value) } >
@@ -35,7 +38,6 @@ function Browse(){
         </select>
       </div>
       {films ? <div className="filmContainer">{ films.map( filmObj => FilmCardCreator(filmObj))}</div>: <p>nada</p> }
-
     </div>
 
     

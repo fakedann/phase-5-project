@@ -5,10 +5,12 @@ import uuid from 'react-uuid';
 
 function Cart(){
 
-  const {cart, setCart, user} = useContext(MyContext)
+  const {user, cart, setCart} = useContext(MyContext)
   const [films, setFilms] = useState([])
+  // const [cart, setCart] = useState([])
   const [errors, setErrors] = useState(['empty']);
   const [success, setSuccess] = useState(undefined)
+  // localStorage.removeItem("cart")
 
   const total = []
   
@@ -61,7 +63,7 @@ function Cart(){
     let i = 0
     while (flag === 0){
       if (cart[i] === e.target.parentNode.parentNode.id){
-        delete cart[i]
+        const removed = cart.splice(i, 1)
         flag = 1
       }
       i++
@@ -74,7 +76,7 @@ function Cart(){
 
   function clearPage(){
     setSuccess(undefined)
-    localStorage.clear()
+    localStorage.removeItem("cart")
     setCart([])
   }
  
