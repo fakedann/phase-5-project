@@ -97,6 +97,7 @@ function Cart(){
 
   return (
     <div id="cart">
+      {errors}
        <table className="styled-table">
               <thead>
                   <tr>

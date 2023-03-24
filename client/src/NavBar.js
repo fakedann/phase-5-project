@@ -9,7 +9,7 @@ function NavBar(){
         <Link to="/browse">Browse</Link>
         <Link to="/cart">Cart</Link>
         <Link to="/history">History</Link>
-        <Link to="/review">Leave a Review</Link>
+        <Link to="/rating">Leave a Rating</Link>
       </ul>
     </nav>
   )

@@ -13,7 +13,7 @@ class PurchasesController < ApplicationController
       end
       render json: transactions
     else
-      render json: {errors: "error"}
+      render json: {errors: "Make sure that your payment form has the same address listed as the one for your profile."}, status: :unauthorized
     end
 
   end

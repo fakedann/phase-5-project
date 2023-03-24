@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/browse" element={<Browse />}/>
           <Route exact path="/cart" element={<Cart />}/>
           <Route exact path="/history" element={<History />}/>
-          <Route exact path="/review" element={<LeaveReview />}/>
+          <Route exact path="/rating" element={<LeaveReview />}/>
         </Routes>
     </div>
   </MyContext.Provider>
