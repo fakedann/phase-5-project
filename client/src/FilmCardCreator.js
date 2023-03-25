@@ -1,9 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import {MyContext} from "./App"
+import { toast } from 'react-toastify';
 
 function FilmCardCreator( film ){
 
   const {cart, setCart} = useContext(MyContext)
+  const notify = () => toast("Succesfully added to cart!", {position: "top-center", autoClose: 1500});
 
   return (
     <div id="container" key={film.id}>	
@@ -27,6 +29,7 @@ function FilmCardCreator( film ){
       let copyCart = [...cart, e.target.parentNode.id]
       setCart([...cart, e.target.parentNode.id])
       localStorage.setItem("cart", JSON.stringify(copyCart))
+      notify()
     }}>
  
      <span className="price">${film.price}</span>

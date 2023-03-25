@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   get "/copies", to: "users#copies_bought"
   patch "/updaterate", to: "rates#update"
   delete "/rate/:id", to: "rates#destroy"
+  get "/sold/:id/:film", to: "purchases#copies_sold"
 end

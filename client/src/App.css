@@ -272,8 +272,9 @@ a {
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-#cart {
-	padding-left: 300px;
+#cart table{
+	margin: auto;
+	margin-bottom: 20px;
 }
 
 .styled-table thead tr {
@@ -345,4 +346,14 @@ a {
 
 .historyCard button{
 	margin-left: 10px;
+}
+
+.errors p {
+	display: block;
+}
+
+#cartclear {
+	margin: auto;
+	margin-bottom: 20px;
+	display: block;
 }

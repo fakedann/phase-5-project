@@ -6,9 +6,10 @@ class RatesController < ApplicationController
     other = Rate.where("user_id = ? and film_id = ?", session[:user_id], params[:filmid])
     bought = Purchase.where("user_id = ? and film_id = ?", session[:user_id], params[:filmid])
     if other.size > 0
-      render json: { errors: "You already have a rating for this film. If you wish to change it, please go to your History page." }, status: :not_found
+      render json: { errors: "You already have a rating for this film. If you wish to change it, please go to your History page." }, status: :unauthorized
+     
     elsif bought.size == 0
-      render json: { errors: "You can only rate films that you have purchased. If you want to proceed, purchase the film first" }, status: :not_found
+      render json: { errors: "You can only rate films that you have purchased. If you want to proceed, purchase the film first" }, status: :unauthorized
     else
       rate = Rate.create!({
       user_id: session[:user_id],
@@ -16,7 +17,7 @@ class RatesController < ApplicationController
       comments: params[:comments],
       score: params[:score]
       })
-      render json: rate
+      render json: rate, status: :created
     end
   end
 
@@ -27,7 +28,7 @@ class RatesController < ApplicationController
 
   def index
     rates = Rate.all
-    render json: rates
+    render json: rates, status: :created
   end
 
   def update
@@ -62,6 +63,6 @@ class RatesController < ApplicationController
   private
 
     def render_unprocessable_entity(invalid)
-      render json: { errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: invalid.record.errors.full_messages.to_sentence}, status: :unprocessable_entity
     end
 end

@@ -7,10 +7,9 @@ function Cart(){
 
   const {user, cart, setCart} = useContext(MyContext)
   const [films, setFilms] = useState([])
-  // const [cart, setCart] = useState([])
-  const [errors, setErrors] = useState(['empty']);
+  const [errors, setErrors] = useState([]);
   const [success, setSuccess] = useState(undefined)
-  // localStorage.removeItem("cart")
+  
 
   const total = []
   
@@ -35,9 +34,6 @@ function Cart(){
 
 
   function sendingPayment(token){
-    console.log('pagando')
-    console.log(token)
-    console.log(cart)
     fetch("/payment", {
       method: "POST",
       headers: {
@@ -48,7 +44,6 @@ function Cart(){
     }).then((r) => {
       if (r.ok) {
         r.json().then((resp) => {
-          console.log(resp)
           setSuccess(resp)
         });
       } else {
@@ -58,7 +53,6 @@ function Cart(){
   }
 
   function deleteCartItem(e){
-    console.log(e.target.parentNode.parentNode.id)
     let flag = 0
     let i = 0
     while (flag === 0){
@@ -68,21 +62,26 @@ function Cart(){
       }
       i++
     }
-    // console.log(newCart)
     localStorage.setItem("cart", JSON.stringify(cart))
     setCart([...cart])
 
   }
 
+  function clearCart(){
+    localStorage.removeItem("cart")
+    setCart([])
+  }
+
   function clearPage(){
     setSuccess(undefined)
     localStorage.removeItem("cart")
+    setErrors([])
     setCart([])
   }
  
     
     if(!user){
-      return <p>plEASE LOG IN FIRST</p>
+      return <p>Please, log in first.</p>
     }
 
     if(success){
@@ -108,14 +107,15 @@ function Cart(){
               <tbody>
                   {cart.map( filmObj => {
                     let film = films.find( obj => obj.id === parseInt(filmObj))
-                    if (film){
-                      let tax = film.price*0.07
-                      total.push(film.price+tax)
-                      return <tr key={uuid()} id={film.id}>
+
+                    if(!film) return null
+                  
+                    let tax = film.price*0.07
+                    total.push(film.price+tax)
+                    return <tr key={uuid()} id={film.id}>
                             <td>{film.title}</td>
                             <td>${film.price}<button className="deleteCartBtn" onClick={deleteCartItem}>X</button></td>
                           </tr>
-                    }
                   })}
                   <tr>
                     <td>Total:</td>
@@ -124,6 +124,7 @@ function Cart(){
               
               </tbody>
           </table>
+          <button id="cartclear" onClick={clearCart}>Clear cart</button>
           <GooglePayButton
   environment="TEST"
   paymentRequest={{

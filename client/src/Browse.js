@@ -27,7 +27,7 @@ function Browse(){
 
   return (
     <div>
-      {errors}
+      <p>{errors}</p>
       <div className="formElement">
         <label>Filter:</label>
         <select value={filterView} onChange={e => setView(e.target.value) } >

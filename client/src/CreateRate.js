@@ -1,5 +1,4 @@
-import React, { useState, createContext, useEffect } from "react";
-import LeaveReview from "./LeaveReview";
+import React, { useState, useEffect } from "react";
 
 function CreateRate( {film, goBack} ){
   
@@ -18,11 +17,10 @@ function CreateRate( {film, goBack} ){
     comments: '',
     filmid: film.id
   });
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState([]);
   const [filmRates, setFilmRates] = useState([])
   const [succes, setSuccess] = useState(undefined)
-
-  console.log(errors)
+  console.log(errors)  
 
   function handleSubmit(e){
     e.preventDefault()
@@ -36,7 +34,7 @@ function CreateRate( {film, goBack} ){
       if (r.ok) {
         r.json().then((resp) => setSuccess(resp));
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors([...errors, err.errors]));
       }
     });
   }
@@ -44,11 +42,6 @@ function CreateRate( {film, goBack} ){
   function back(){
     goBack()
   }
-
-  function getRatings(){
-    
-  }
-
 
   if(succes){
     return (
@@ -91,7 +84,7 @@ function CreateRate( {film, goBack} ){
             </div>
         <button id="submitReview" type="submit">Submit</button>
        </form>
-       {errors}
+       <p>{errors[0]}</p>
        <p>Last 5 ratings for this film:</p>
        <div id="rates">
        { filmRates.map( rateObj => 

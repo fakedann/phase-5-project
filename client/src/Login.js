@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState} from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import {MyContext} from "./App"
@@ -7,7 +7,6 @@ function Login() {
 
   const {user, setUser, setCart} = useContext(MyContext)
   const [showLogin, setShowLogin] = useState(true);
-  console.log(user)
   
 
   if (user) return (

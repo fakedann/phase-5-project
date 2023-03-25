@@ -6,13 +6,16 @@ import Browse from './Browse';
 import Cart from './Cart';
 import History from './History';
 import LeaveReview from './LeaveReview';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const MyContext = createContext()
 
 function App() {
   const [user, setUser] = useState(undefined);
   const [cart, setCart] = useState([])
-  let localCart = localStorage.getItem("cart")
+  let localCart = JSON.parse(localStorage.getItem("cart"))
   const globalValues = {
     user,
     setUser,
@@ -21,7 +24,6 @@ function App() {
   }
 
   useEffect(() => {
-    localCart = JSON.parse(localCart);
     if (localCart) setCart(localCart)
 
     fetch("/me").then((r) => {
@@ -43,6 +45,7 @@ function App() {
           <Route exact path="/history" element={<History />}/>
           <Route exact path="/rating" element={<LeaveReview />}/>
         </Routes>
+        <ToastContainer />
     </div>
   </MyContext.Provider>
   );

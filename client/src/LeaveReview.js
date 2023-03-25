@@ -11,14 +11,18 @@ function LeaveReview(){
 
   function handleSearch(e){
     e.preventDefault()
-    console.log(search)
-    fetch(`/searchfilm/${search}`).then((r) => {
-      if (r.ok) {
-        r.json().then((resp) => setFilm(resp));
-      }else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+    if(search !== ''){
+      fetch(`/searchfilm/${search}`).then((r) => {
+        if (r.ok) {
+          r.json().then((resp) => setFilm(resp));
+        }else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
+    }else{
+      setErrors(['The search cannot be blank'])
+    }
+   
   }
 
   function goBack(){
@@ -47,7 +51,7 @@ function LeaveReview(){
           </div>
         <button id="submitReview" type="submit">Submit</button>
        </form>
-        {errors}
+        <p>{errors}</p>
     </div>
   )
 }

@@ -13,7 +13,6 @@ function History(){
     operation: '',
     film: undefined
   })
-  console.log(copies)
 
   useEffect( () => {
     fetch(`/copies`).then((r) => {
