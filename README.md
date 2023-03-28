@@ -1,351 +1,94 @@
-# Project Template: React/Rails API
+# Phase-5 Project
+## _Bluray Mini Store_
 
-## Description
+## Features
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Render.
+- Create a robust and smooth data flow with the help of useContext
+- Showcase the ability to link diverse types of files (image, video, etc) to your models with Active Storage
+- Closely replicate the behavior of a payment system with Google Pay 
+- Persist shopping carts with Local Storage
 
-**Note**: if you are not planning to deploy your app to Render and prefer to use
-SQLite, you will need to make the following changes in the project files:
-
-1. In the `Gemfile`, replace `gem 'pg', '~> 1.1'` with `gem 'sqlite3', '~>
-   1.4'`.
-2. In the `database.yml` file, change the line `adapter: postgresql` to
-   `adapter: sqlite3`.
-
-## Requirements
-
-- Ruby 2.7.4
-- NodeJS (v16), and npm
-- Render account
-- Postgresql
-
-See Environment Setup below for instructions on installing these tools if you
-don't already have them.
+While this project closely follows the practices and standards set for the Phase-4 Project on my Flatiron School's journey, the main difference set for this one would be the intent to break some of the boundaries that have been established. As developers, we need to always be in the lookout for new technologies that can improve our workspace. As such, the ability to read and implement features that we are not familiar with is an essential tool. This project tries to solve some of those challenges by taking advantage of technologies that I was not aware of such as useContext, Active Storage, Google Pay and Local Storage.
 
 ## Setup
 
-Start by **cloning** (not forking) the project template repository and removing
-the remote:
+The following indications only apply if the user wishes to run the application locally. There is a deployed version of the app in the Render domain that you can [reach with this link.](https://phase-5-project-acnb.onrender.com)
 
-```console
-$ git clone git@github.com:learn-co-curriculum/project-template-react-rails-api.git your-project-name
-$ cd your-project-name
-$ git remote rm origin
+### Requirements
+
+The project relies on npm and node.js capabilities. [ First, install these components ](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). After forking and cloning this repository into a local directory in your pc, you should be able to run the following command to install all of the third-party components necessary:
+```sh
+ npm install
 ```
+Locate the src folder and manually check that the package.json file counts with google pay, react-router-dom, and react-toastify under dependencies. If they did not install automatically, here are the places to manually add them:
+- React Router: https://www.npmjs.com/package/react-router
+- Google Pay: https://www.npmjs.com/package/@google-pay/button-react
+- Toasts: https://www.npmjs.com/package/react-toastify/v/8.0.0 (Make sure you are using version 8.0.0)
 
-Then, [create a new remote repository][create repo] on GitHub. Head to
-[github.com](https://github.com) and click the **+** icon in the top-right
-corner and follow the steps to create a new repository. **Important**: don't
-check any of the options such as 'Add a README file', 'Add a .gitignore file',
-etc. — since you're importing an existing repository, creating any of those
-files on GitHub will cause issues.
+Additionally, you need to install some features that will manage the backend side of things. Mac users tend to count with built-ins Ruby interpreters, but here's a guide for Microsoft users and outdated versions of Ruby: https://www.ruby-lang.org/en/downloads/. After updating your Ruby interpreter, you must also download Rails web framework:
 
-[create repo]: https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line#adding-a-project-to-github-without-github-cli
+- Rails: https://guides.rubyonrails.org/v5.1/getting_started.html#installing-rails
 
-If you're working with a partner,
-[add them as a collaborator][add collaborator] on GitHub. From your repo on
-GitHub, go to Settings > Manage Access > Invite a collaborator and enter your
-partner's username. Once your partner has access, they should git **clone** (not
-fork) the repository.
+This project relies on a powerful tool called Active Storage. It allows Rails to link models with complex data files such as images and videos. In order for it to work, you must follow specific instructions to set it up. By forking and cloning this repository, the gemfile and all of the other files should be ready to go. However, in the case that they are not, here are some helpful resources to manually set it up:
+- https://www.youtube.com/watch?v=_rLMRd676-I&t=1170s&ab_channel=Deanin
+- https://guides.rubyonrails.org/active_storage_overview.html
 
-[add collaborator]: https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository
-
-Finally, connect the GitHub remote repository to your local repository and push
-up your code:
-
-```console
-$ git remote add origin git@github.com:your-username/your-project-name.git
-$ git push -u origin main
-```
-
-When you're ready to start building your project, run:
+Once everything is succesfully set up, open the terminal where you forked/cloned this repository and type in the following command:
 
 ```sh
-bundle install
-rails db:create
-npm install --prefix client
+ rails s
 ```
+This will activate the server capabilities offered by Rails. This will in essence work as your connection to the database/backend side of the project. In here, the user can check useful information as to how Rails operates under the hood. If there's any error that the backend wishes to notify the frontend about, they will also appear in detail on this console.
 
-You can use the following commands to run the application:
-
-- `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
-- `npm start --prefix client`: run the frontend on
-  [http://localhost:4000](http://localhost:4000)
-
-Make sure to also update this README to include documentation about
-your project. Here's a list of some [awesome readmes][] for inspiration.
-
-[awesome readmes]: https://github.com/matiassingers/awesome-readme
-
-## Deploying
-
-This application has all the starter code needed to help you deploy your
-application to Render. It's recommended to deploy your project early and push up
-changes often to ensure that your code works equally well in production and
-development environments.
-
-The instructions in this section assume that you've already set up a Render
-account, created a PostgreSQL instance in your account, and set up your
-environment to deploy to Render. If you have not yet completed these steps, see
-the Environment Setup section below.
-
-### Create a Master Key File
-
-In the project files, delete the `config/credentials.yml.enc` file. Then, in the
-terminal, run the following:
+In addition, the user needs to open a new terminal. The user must also locate the same folder that contains this repository, but this time the user must get into the /client folder. Once you have locatated this folder and opened it, type in the following command:
 
 ```sh
-$ EDITOR="code --wait" bin/rails credentials:edit
+ npm start
 ```
 
-**Note**: if you use a different text editor than VS Code, you will need to replace
-`code` with the appropriate command.
+Once you have typed this command, this will enable the frontend side of the project. A new tab on your browser will open that will showcase the project and all of its interactive features.
 
-The command above will open a file in VS Code and wait for you to close it
-before completing the process of creating the credential files. Once you've done
-that, you should see both the `credentials.yml.enc` and `master.key` files in
-the `config` folder. You will need the value in the `master.key` file to set up
-the web service in Render.
 
-Commit your changes and push them to GitHub.
+## Usage
 
-### Create the App Database
+**Home page**
+This page handles the logging and signing features. When you are creating a new account, here are some restrictions that you must comply with:
+- Email must be righly formatted: somenameor07@gmail.com
+- Passwords must be at least 6 characters long
+- Names cannot contain numbers or symbols
+- Address cannot contain symbols
+- You must select an image for your profile
 
-Render allows users to create [multiple databases within a single PostgreSQL
-instance][multiple dbs] using the PostgreSQL interactive terminal,
-[`psql`][psql].
+useContext is a hook that allows users to enable global values to be shared across your application in an efficient manner. Mainly, the information regarding the logged in user is shared throughout all of the application thanks to this tool.
 
-Navigate to your PostgreSQL instance from the Render dashboard, click the
-"Connect" dropdown, then the External Connection tab, and copy the PSQL command.
-Paste it into your terminal and press enter. This command connects you to the
-remote PostgreSQL instance.
+**Browse**
+This section will allow you to search for available films on sale. There is a filter on the top of the page that will show you by default the last 5 films added to the collection, but you could also choose to display low rated/high rated films or the whole collection.
+When you are browsing through the films, they will display on the left the title, the average rating given by users, and a synopsis for it. On the right, each film will count with a poster image. If you hover over the image, you will find additional information such as the director's name, the year it was released, the genre and runtime of the film. Lastly, on the bottom left, there will be "add to cart" button that will start processing your future purchases. Right next to it, you can look at the film's price. If you select a certain film succesfully, you should see a Toast notification on the top center indicating that it was succesfully added to your cart. You can go to any other page or refresh this page as many times as you like, but the films added to your cart will be persisted thanks to the magic of local storage. 
 
-To create the database, run this SQL command:
+**Cart**
+This is where you finalize your purchases. After selecting the films that you wish to buy from the browse section, you must head over to this section. Before paying, you can delete a specific film that you do not want to purchase anymore, or delete the whole cart if you wish as well. Once you are ready to buy your films, click on the Google Pay button. This feature will securely recollect data regarding your gmail addresses, credit/debit cards, and physical address. If the purchase can be successfully processed according to Google's server, it will return a JSON object that the project runs through the backend in order to finalize the purchase and create the according model associations. **The address in the form of payment must match the one linked to the website's profile.**
 
-```sql
-CREATE DATABASE new_db_name;
-```
+**History**
+This page will display your purchase history. You must have already gone through the whole process of selecting a film through browse and then paying for it through your cart in order to see any information displayed in here. Once you do, it will show you the amount of times you have bought the same film and your rating (if you have provided one for it already). Additionally, you will be able to either delete or change the rating you provided for each film through this page. 
 
-Now if you run `\l` from the PSQL prompt, you should see a table that includes
-your main PostgreSQL instance as well as the database you just created.
+**Leave a Rating**
+In order to submit a rating, you must first search for a specific film. The search bar is case insensitive, but there are not partial matches. For example, if there's a film titled "Burning", but you submit 'Burnin', with only a 'g' missing, the page will tell you that nothing could be found with that title. If you provide a matching title, a poster for the film and additional information will be displayed. Once you have reached this point, you can now submit your comment if you meet a few conditions:
+- You must already have purchased the film
+- You cannot submit a second rating for a film. If you wish to change or delete your already existing rating, you must do it through your history page.
 
-Run the `\q` command to exit PSQL.
+#### Contributing
+Suggestions are welcome in terms of the application's performance or presentation. For direct contact, use the following email address: daniel07escalona@gmail.com. 
 
-[multiple dbs]: https://render.com/docs/databases#multiple-databases-in-a-single-postgresql-instance
-[psql]: https://www.postgresql.org/docs/current/app-psql.html
+#### Authors and Acknowledgment
+**Author: Daniel Escalona. Student at [Flatiron School.](https://flatironschool.com/welcome-to-flatiron-school/?utm_source=Google&utm_medium=ppc&utm_campaign=12728169833&utm_content=127574232664&utm_term=flatiron&uqaid=513799628630&CjwKCAiA4KaRBhBdEiwAZi1zzgCEBEdI6285I6gmLUyI5Pw_8YNLXh1P1oRIGf8t0fXozErvGMW5FRoCG1MQAvD_BwE&gclid=CjwKCAiA4KaRBhBdEiwAZi1zzgCEBEdI6285I6gmLUyI5Pw_8YNLXh1P1oRIGf8t0fXozErvGMW5FRoCG1MQAvD_BwE)**
+**This project would not have been possible without the following resources:**
 
-### Create the Render Web Service
+https://www.npmjs.com/package/react
+https://flatironschool.com/courses/coding-bootcamp/
+https://rubyonrails.org/
+https://guides.rubyonrails.org/active_storage_overview.html
+https://developers.googleblog.com/2020/06/simpler-google-pay-integration-for-react-web-developers.html
 
-To deploy, click the "New +" button in Render and select "Web Service". You'll
-see a list of all the repositories in your GitHub account. Find the repo you
-want to deploy and click the "Select" button.
+## License
 
-In the page that opens, enter a name for your app and make sure the Environment
-is set to Ruby.
-
-Scroll down and set the Build Command to `./bin/render-build.sh` and the Start
-Command to `bundle exec puma -C config/puma.rb`.
-
-Open a separate tab in your browser, navigate to the Render dashboard, and click
-on your PostgreSQL instance. Scroll down to the "Connection" section, find the
-"Internal Database URL", and copy it.
-
-Return to the other tab. Scroll down and click the "Advanced" button, then click
-"Add Environment Variable." Enter `DATABASE_URL` as the key, then paste in the
-URL you just copied. Note that the URL will end with the name you gave your
-PostgreSQL instance when you initially created it; be sure to remove that name
-and replace it with the name of the database you created in the last section.
-
-Click "Add Environment Variable" again. Add `RAILS_MASTER_KEY` as the key, and
-paste the value in the `config/master.key` file you created earlier.
-
-The completed page should look like this:
-
-![Web service settings](https://curriculum-content.s3.amazonaws.com/phase-4/project-template/web-service-settings.png)
-
-Scroll down to the bottom of the page and click "Create Web Service". The deploy
-process will begin automatically.
-
-## Environment Setup
-
-### Install the Latest Ruby Version
-
-Verify which version of Ruby you're running by entering this in the terminal:
-
-```console
-$ ruby -v
-```
-
-We recommend version 2.7.4. If you need to upgrade you can install it using rvm:
-
-```console
-$ rvm install 2.7.4 --default
-```
-
-You should also install the latest versions of `bundler` and `rails`:
-
-```console
-$ gem install bundler
-$ gem install rails
-```
-
-### Install NodeJS
-
-Verify you are running a recent version of Node with:
-
-```sh
-node -v
-```
-
-If your Node version is not 16.x.x, install it and set it as the current and
-default version with:
-
-```sh
-nvm install 16
-nvm use 16
-nvm alias default 16
-```
-
-You can also update your npm version with:
-
-```sh
-npm i -g npm
-```
-
-### Install Postgresql
-
-Render requires that you use PostgreSQL for your database instead of SQLite.
-PostgreSQL (or just Postgres for short) is an advanced database management
-system with more features than SQLite. If you don't already have it installed,
-you'll need to set it up.
-
-#### PostgreSQL Installation for WSL
-
-To install Postgres for WSL, run the following commands from your Ubuntu terminal:
-
-```sh
-sudo apt update
-sudo apt install postgresql postgresql-contrib libpq-dev
-```
-
-Then confirm that Postgres was installed successfully:
-
-```sh
-psql --version
-```
-
-Run this command to start the Postgres service:
-
-```sh
-sudo service postgresql start
-```
-
-Finally, you'll also need to create a database user so that you are able to
-connect to the database from Rails. First, check what your operating system
-username is:
-
-```sh
-whoami
-```
-
-If your username is "ian", for example, you'd need to create a Postgres user
-with that same name. To do so, run this command to open the Postgres CLI:
-
-```sh
-sudo -u postgres -i
-```
-
-From the Postgres CLI, run this command (replacing "ian" with your username):
-
-```sh
-createuser -sr ian
-```
-
-Then enter `control + d` or type `logout` to exit.
-
-[This guide][postgresql wsl] has more info on setting up Postgres on WSL if you
-get stuck.
-
-[postgresql wsl]: https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql
-
-#### Postgresql Installation for OSX
-
-To install Postgres for OSX, you can use Homebrew:
-
-```sh
-brew install postgresql
-```
-
-Once Postgres has been installed, run this command to start the Postgres
-service:
-
-```sh
-brew services start postgresql
-```
-
-### Set Up a Render Account
-
-You can sign up for a free account at
-[https://dashboard.render.com/register][Render signup]. We recommend that you
-sign up using GitHub as that will make it a little easier for you to connect
-Render to your GitHub account. The instructions below assume you've done that.
-
-[Render signup]: https://dashboard.render.com/register
-
-Once you've completed the signup process, you will be taken to the Render
-dashboard. In order to connect Render to your GitHub account, you'll need to
-click the "New Web Service" button in the "Web Services" box. On the next page,
-you will see a GitHub heading on the right side and below that a link labeled
-"Connect account". (If you didn't sign up using GitHub, it will say "Connect
-account" instead.) Click that link, then in the modal that appears click
-"Install." You should then be taken back to the "Create a New Web Service" page,
-which should now show a list of your GitHub repos. We won't actually create a
-web service just yet so you are free to navigate away from the page at this
-point.
-
-Next, we'll set up a PostgreSQL instance. Click the "New +" button at the top of
-the page and select "PostgreSQL". Enter a name for your PostgreSQL instance. The
-remaining fields can be left as is. Click "Create Database" at the bottom of the
-page. You should now be all set to follow the steps in the "Deploying" section.
-
-## Troubleshooting
-
-If you ran into any errors along the way, here are some things you can try to
-troubleshoot:
-
-- If you're on a Mac and got a server connection error when you tried to run
-  `rails db:create`, one option for solving this problem for Mac users is to
-  install the Postgres app. To do this, first uninstall `postgresql` by running
-  `brew remove postgresql`. Next, download the app from the
-  [Postgres downloads page][] and install it. Launch the app and click
-  "Initialize" to create a new server. You should now be able to run
-  `rails db:create`.
-
-- If you're using WSL and got the following error running `rails db:create`:
-
-  ```txt
-  PG::ConnectionBad: FATAL:  role "yourusername" does not exist
-  ```
-
-  The issue is that you did not create a role in Postgres for the default user
-  account. Check [this video](https://www.youtube.com/watch?v=bQC5izDzOgE) for
-  one possible fix.
-
-- If your app failed to deploy at the build stage, make sure your local
-  environment is set up correctly by following the steps at the beginning of
-  this lesson. Check that you have the latest versions of Ruby and Bundler, and
-  ensure that PostgreSQL was installed successfully.
-
-- If you deployed successfully, but you ran into issues when you visited the
-  site, make sure you migrated and seeded the database. Also, make sure that
-  your application works locally and try to debug any issues on your local
-  machine before re-deploying. You can also check the deployment log on the
-  app's page in the Render dashboard.
-
-[postgres downloads page]: https://postgresapp.com/downloads.html
-
-## Resources
-
-- [Getting Started with Ruby on Rails on Render](https://render.com/docs/deploy-rails)
-- [Render Databases Guide](https://render.com/docs/databases)
+MIT
