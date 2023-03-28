@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Phase-5 Project
+## _Bluray Mini Store_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+- Create a robust and smooth data flow with the help of useContext
+- Showcase the ability to link diverse types of files (image, video, etc) to your models with Active Storage
+- Closely replicate the behavior of a payment system with Google Pay 
+- Persist shopping carts with Local Storage
 
-In the project directory, you can run:
+While this project closely follows the practices and standards set for the Phase-4 Project on my Flatiron School's journey, the main difference set for this one would be the intent to break some of the boundaries that have been established. As developers, we need to always be in the lookout for new technologies that can improve our workspace. As such, the ability to read and implement features that we are not familiar with is an essential tool. This project tries to solve some of those challenges by taking advantage of technologies that I was not aware of such as useContext, Active Storage, Google Pay and Local Storage.
 
-### `npm start`
+## Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The following indications only apply if the user wishes to run the application locally. There is a deployed version of the app in the Render domain that you can [reach with this link.](https://phase-5-project-acnb.onrender.com)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Requirements
 
-### `npm test`
+The project relies on npm and node.js capabilities. [ First, install these components ](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). After forking and cloning this repository into a local directory in your pc, you should be able to run the following command to install all of the third-party components necessary:
+```sh
+ npm install
+```
+Locate the src folder and manually check that the package.json file counts with google pay, react-router-dom, and react-toastify under dependencies. If they did not install automatically, here are the places to manually add them:
+- React Router: https://www.npmjs.com/package/react-router
+- Google Pay: https://www.npmjs.com/package/@google-pay/button-react
+- Toasts: https://www.npmjs.com/package/react-toastify/v/8.0.0 (Make sure you are using version 8.0.0)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Additionally, you need to install some features that will manage the backend side of things. Mac users tend to count with built-ins Ruby interpreters, but here's a guide for Microsoft users and outdated versions of Ruby: https://www.ruby-lang.org/en/downloads/. After updating your Ruby interpreter, you must also download Rails web framework:
 
-### `npm run build`
+- Rails: https://guides.rubyonrails.org/v5.1/getting_started.html#installing-rails
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project relies on a powerful tool called Active Storage. It allows Rails to link models with complex data files such as images and videos. In order for it to work, you must follow specific instructions to set it up. By forking and cloning this repository, the gemfile and all of the other files should be ready to go. However, in the case that they are not, here are some helpful resources to manually set it up:
+- https://www.youtube.com/watch?v=_rLMRd676-I&t=1170s&ab_channel=Deanin
+- https://guides.rubyonrails.org/active_storage_overview.html
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once everything is succesfully set up, open the terminal where you forked/cloned this repository and type in the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+ rails s
+```
+This will activate the server capabilities offered by Rails. This will in essence work as your connection to the database/backend side of the project. In here, the user can check useful information as to how Rails operates under the hood. If there's any error that the backend wishes to notify the frontend about, they will also appear in detail on this console.
 
-### `npm run eject`
+In addition, the user needs to open a new terminal. The user must also locate the same folder that contains this repository, but this time the user must get into the /client folder. Once you have locatated this folder and opened it, type in the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+ npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once you have typed this command, this will enable the frontend side of the project. A new tab on your browser will open that will showcase the project and all of its interactive features.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Usage
 
-## Learn More
+**Home page**
+This page handles the logging and signing features. When you are creating a new account, here are some restrictions that you must comply with:
+- Email must be righly formatted: somenameor07@gmail.com
+- Passwords must be at least 6 characters long
+- Names cannot contain numbers or symbols
+- Address cannot contain symbols
+- You must select an image for your profile
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+useContext is a hook that allows users to enable global values to be shared across your application in an efficient manner. Mainly, the information regarding the logged in user is shared throughout all of the application thanks to this tool.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Browse**
+This section will allow you to search for available films on sale. There is a filter on the top of the page that will show you by default the last 5 films added to the collection, but you could also choose to display low rated/high rated films or the whole collection.
+When you are browsing through the films, they will display on the left the title, the average rating given by users, and a synopsis for it. On the right, each film will count with a poster image. If you hover over the image, you will find additional information such as the director's name, the year it was released, the genre and runtime of the film. Lastly, on the bottom left, there will be "add to cart" button that will start processing your future purchases. Right next to it, you can look at the film's price. If you select a certain film succesfully, you should see a Toast notification on the top center indicating that it was succesfully added to your cart. You can go to any other page or refresh this page as many times as you like, but the films added to your cart will be persisted thanks to the magic of local storage. 
 
-### Code Splitting
+**Cart**
+This is where you finalize your purchases. After selecting the films that you wish to buy from the browse section, you must head over to this section. Before paying, you can delete a specific film that you do not want to purchase anymore, or delete the whole cart if you wish as well. Once you are ready to buy your films, click on the Google Pay button. This feature will securely recollect data regarding your gmail addresses, credit/debit cards, and physical address. If the purchase can be successfully processed according to Google's server, it will return a JSON object that the project runs through the backend in order to finalize the purchase and create the according model associations. **The address in the form of payment must match the one linked to the website's profile.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**History**
+This page will display your purchase history. You must have already gone through the whole process of selecting a film through browse and then paying for it through your cart in order to see any information displayed in here. Once you do, it will show you the amount of times you have bought the same film and your rating (if you have provided one for it already). Additionally, you will be able to either delete or change the rating you provided for each film through this page. 
 
-### Analyzing the Bundle Size
+**Leave a Rating**
+In order to submit a rating, you must first search for a specific film. The search bar is case insensitive, but there are not partial matches. For example, if there's a film titled "Burning", but you submit 'Burnin', with only a 'g' missing, the page will tell you that nothing could be found with that title. If you provide a matching title, a poster for the film and additional information will be displayed. Once you have reached this point, you can now submit your comment if you meet a few conditions:
+- You must already have purchased the film
+- You cannot submit a second rating for a film. If you wish to change or delete your already existing rating, you must do it through your history page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Contributing
+Suggestions are welcome in terms of the application's performance or presentation. For direct contact, use the following email address: daniel07escalona@gmail.com. 
 
-### Making a Progressive Web App
+#### Authors and Acknowledgment
+**Author: Daniel Escalona. Student at [Flatiron School.](https://flatironschool.com/welcome-to-flatiron-school/?utm_source=Google&utm_medium=ppc&utm_campaign=12728169833&utm_content=127574232664&utm_term=flatiron&uqaid=513799628630&CjwKCAiA4KaRBhBdEiwAZi1zzgCEBEdI6285I6gmLUyI5Pw_8YNLXh1P1oRIGf8t0fXozErvGMW5FRoCG1MQAvD_BwE&gclid=CjwKCAiA4KaRBhBdEiwAZi1zzgCEBEdI6285I6gmLUyI5Pw_8YNLXh1P1oRIGf8t0fXozErvGMW5FRoCG1MQAvD_BwE)**
+**This project would not have been possible without the following resources:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+https://www.npmjs.com/package/react
+https://flatironschool.com/courses/coding-bootcamp/
+https://rubyonrails.org/
+https://guides.rubyonrails.org/active_storage_overview.html
+https://developers.googleblog.com/2020/06/simpler-google-pay-integration-for-react-web-developers.html
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
