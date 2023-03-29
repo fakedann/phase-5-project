@@ -44,9 +44,6 @@ function Login() {
               <button color="secondary" onClick={() => setShowLogin(false)}>
                 Sign Up
               </button>
-              <button color="secondary" onClick={() => setUser('daniel')}>
-                Testuser
-              </button>
             </p>
           </>
         ) : (

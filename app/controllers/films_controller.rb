@@ -44,7 +44,7 @@ class FilmsController < ApplicationController
 
   def search
     minuscula = params[:film].downcase
-    film = Film.find_by("LOWER(title) =  ?", minuscula)
+    film = Film.find_by("LOWER(title) like ?", "%#{minuscula}%")
     if film
       render json: film, status: :created
     else

@@ -32,7 +32,7 @@ function LeaveReview(){
 
   if(!user) return <p>Please, log in first.</p>
 
-  if (film){
+  if (search === "encontreee"){
     return <CreateRate film={film} goBack={goBack}/>
   }
 
@@ -52,6 +52,9 @@ function LeaveReview(){
         <button id="submitReview" type="submit">Submit</button>
        </form>
         <p>{errors}</p>
+        {film ? <div>
+          <p >Did you mean {film.title} ({film.year})?</p>
+          <button onClick={() => setSearch('encontreee')}>Confirm</button></div>: null}
     </div>
   )
 }
