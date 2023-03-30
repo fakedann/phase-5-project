@@ -8,6 +8,7 @@ import History from './History';
 import LeaveReview from './LeaveReview';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 
 export const MyContext = createContext()
@@ -38,6 +39,7 @@ function App() {
   return (
     <MyContext.Provider value={globalValues}>
       <div className="app">
+      <PayPalScriptProvider options={{ "client-id": "test" }}>
         <Routes>
           <Route exact path="/" element={<Login />}/>
           <Route exact path="/browse" element={<Browse />}/>
@@ -46,6 +48,7 @@ function App() {
           <Route exact path="/rating" element={<LeaveReview />}/>
         </Routes>
         <ToastContainer />
+      </PayPalScriptProvider>
     </div>
   </MyContext.Provider>
   );

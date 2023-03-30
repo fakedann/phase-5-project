@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import {MyContext} from "./App"
 import GooglePayButton from '@google-pay/button-react';
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import uuid from 'react-uuid';
+import { toast } from 'react-toastify';
+
 
 function Cart(){
 
@@ -9,6 +12,7 @@ function Cart(){
   const [films, setFilms] = useState([])
   const [errors, setErrors] = useState([]);
   const [success, setSuccess] = useState(undefined)
+  const notify = () => toast("Payment was successful!", {position: "top-center", autoClose: 2000});
   
 
   const total = []
@@ -30,7 +34,6 @@ function Cart(){
       });
     }
   }, [user, cart])
-  console.log(cart)
 
 
   function sendingPayment(token){
@@ -44,6 +47,7 @@ function Cart(){
     }).then((r) => {
       if (r.ok) {
         r.json().then((resp) => {
+          notify()
           setSuccess(resp)
         });
       } else {
@@ -125,7 +129,25 @@ function Cart(){
               </tbody>
           </table>
           <button id="cartclear" onClick={clearCart}>Clear cart</button>
-          <GooglePayButton
+          { Number((total.reduce((a, b) => a + b, 0)).toFixed(2)) > 0 ? <PayPalButtons createOrder={(data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [
+                            {
+                                amount: {
+                                    value: "0.01",
+                                },
+                            },
+                        ],
+                    });
+                }}
+                onApprove={(data, actions) => {
+                    return actions.order.capture().then((details) => {
+                        
+                        sendingPayment(details.payer.address.address_line_1)
+            
+                    });
+                }} /> : null}
+          {/* <GooglePayButton
   environment="TEST"
   paymentRequest={{
     apiVersion: 2,
@@ -164,7 +186,7 @@ function Cart(){
     sendingPayment(paymentRequest.shippingAddress.address1)
     // setToken(paymentRequest.shippingAddress.address1)
   }}
-/>
+/> */}
     </div>
     
     

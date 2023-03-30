@@ -6,6 +6,8 @@ import {BrowserRouter} from "react-router-dom"
 import reportWebVitals from './reportWebVitals';
 import NavBar from './NavBar';
 
+
+
 ReactDOM.render(
   <BrowserRouter>
       <NavBar />
