@@ -12,7 +12,7 @@ While this project closely follows the practices and standards set for the Phase
 
 ## Setup
 
-The following indications only apply if the user wishes to run the application locally. There is a deployed version of the app in the Render domain that you can [reach with this link.](https://phase-5-project-acnb.onrender.com)
+The following indications only apply if the user wishes to run the application locally. There is a deployed version of the app in the Render domain that you can [reach with this link.](https://phase-5-project-acnb.onrender.com). Otherwise, follow the instructions below to install it locally.
 
 ### Requirements
 
@@ -20,7 +20,7 @@ The project relies on npm and node.js capabilities. [ First, install these compo
 ```sh
  npm install
 ```
-Locate the src folder and manually check that the package.json file counts with google pay, react-router-dom, and react-toastify under dependencies. If they did not install automatically, here are the places to manually add them:
+Locate the src folder and manually check that the package.json file counts with react-paypal, react-router-dom, and react-toastify under dependencies. If they did not install automatically, here are the places to manually add them:
 - React Router: https://www.npmjs.com/package/react-router
 - React Paypal: https://www.npmjs.com/package/@paypal/react-paypal-js?activeTab=readme
 - Toasts: https://www.npmjs.com/package/react-toastify/v/8.0.0 (Make sure you are using version 8.0.0)
@@ -44,7 +44,7 @@ Some users, films, and ratings have been created beforehand in order to test the
 ```sh
  rails db:seed
 ```
-This will ensure that those premade materials will get created. **It is worth nothing that the payment system of this application is not intended for real life purposes, which means that in order to avoid the usage of real cards, some testing cards have been provided by Paypal**. Down below, a list of cards will be provided. You must enter the numbers exactly as they are described, but the expiration date and CSC number can be anything:
+This will ensure that those premade materials will get created. **It is worth nothing that the payment system of this application is not intended for real life purposes, which means that in order to avoid the usage of real cards, some testing cards have been provided by Paypal**. Down below, a list of cards will be provided. You must enter the numbers exactly as they are described, but the expiration date and CSC number can be random:
 - 4005519200000004
 - 4012000033330026
 - 4012000077777777
@@ -99,7 +99,8 @@ https://www.npmjs.com/package/react
 https://flatironschool.com/courses/coding-bootcamp/
 https://rubyonrails.org/
 https://guides.rubyonrails.org/active_storage_overview.html
-https://developers.googleblog.com/2020/06/simpler-google-pay-integration-for-react-web-developers.html
+https://developer.paypal.com/home
+
 
 ## License
 
