@@ -311,17 +311,17 @@ a {
 }
 
 #rates{
-	padding-left: 400px;
 	margin-bottom: 50px;
 	
 }
 
 .cardRates {
+	margin: 0 auto;
 	margin-bottom: 20px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	width: 300px;
-	height: 150px;
+	min-height: 150px;
 	background-color: white;
 	text-align: center;
 	border: solid;

@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import {MyContext} from "./App"
-import GooglePayButton from '@google-pay/button-react';
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import uuid from 'react-uuid';
 import { toast } from 'react-toastify';
@@ -147,46 +146,6 @@ function Cart(){
             
                     });
                 }} /> : null}
-          {/* <GooglePayButton
-  environment="TEST"
-  paymentRequest={{
-    apiVersion: 2,
-    apiVersionMinor: 0,
-    allowedPaymentMethods: [
-      {
-        type: 'CARD',
-        parameters: {
-          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-          allowedCardNetworks: ['MASTERCARD', 'VISA'],
-        },
-        tokenizationSpecification: {
-          type: 'PAYMENT_GATEWAY',
-          parameters: {
-            gateway: 'example',
-            gatewayMerchantId: 'exampleGatewayMerchantId',
-          },
-        },
-      },
-    ],
-    merchantInfo: {
-      merchantId: '12345678901234567890',
-      merchantName: 'Demo Merchant',
-    },
-    transactionInfo: {
-      totalPriceStatus: 'FINAL',
-      totalPriceLabel: 'Total',
-      totalPrice: '0.50',
-      currencyCode: 'USD',
-      countryCode: 'US',
-    },
-    shippingAddressRequired: true
-  }}
-  onLoadPaymentData={paymentRequest => {
-    console.log(paymentRequest.shippingAddress);
-    sendingPayment(paymentRequest.shippingAddress.address1)
-    // setToken(paymentRequest.shippingAddress.address1)
-  }}
-/> */}
     </div>
     
     

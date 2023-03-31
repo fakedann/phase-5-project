@@ -19,8 +19,7 @@ function CreateRate( {film, goBack} ){
   });
   const [errors, setErrors] = useState([]);
   const [filmRates, setFilmRates] = useState([])
-  const [succes, setSuccess] = useState(undefined)
-  console.log(errors)  
+  const [succes, setSuccess] = useState(undefined) 
 
   function handleSubmit(e){
     e.preventDefault()

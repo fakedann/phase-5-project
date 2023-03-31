@@ -8,7 +8,7 @@ import History from './History';
 import LeaveReview from './LeaveReview';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 
 export const MyContext = createContext()

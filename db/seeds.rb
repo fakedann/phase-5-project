@@ -1,10 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 
 
 User.destroy_all
@@ -201,31 +197,232 @@ films = Film.create!([
 }
 ])
 
+purchases = Purchase.create!(
+  [
+    {
+      user_id: User.first.id,
+      film_id: films[0].id,
+    },
+    {
+      user_id: User.first.id,
+      film_id: films[1].id,
+    },
+    {
+      user_id: User.first.id,
+      film_id: films[2].id,
+    },
+    {
+      user_id: User.first.id,
+      film_id: films[5].id,
+    },
+    {
+      user_id: user2.id,
+      film_id: films[3].id,
+    },
+    {
+      user_id: user2.id,
+      film_id: films[4].id,
+    },
+    {
+      user_id: user2.id,
+      film_id: films[6].id,
+    },
+    {
+      user_id: user2.id,
+      film_id: films[7].id,
+    },
+    {
+      user_id: user2.id,
+      film_id: films[8].id,
+    },
+    {
+      user_id: user3.id,
+      film_id: films[0].id,
+    },
+    {
+      user_id: user3.id,
+      film_id: films[10].id,
+    },
+    {
+      user_id: user3.id,
+      film_id: films[9].id,
+    },
+    {
+      user_id: user3.id,
+      film_id: films[11].id,
+    },
+    {
+      user_id: user3.id,
+      film_id: films[1].id,
+    },
+    {
+      user_id: user4.id,
+      film_id: films[7].id,
+    },
+    {
+      user_id: user4.id,
+      film_id: films[2].id,
+    },
+    {
+      user_id: user4.id,
+      film_id: films[10].id,
+    },
+    {
+      user_id: user5.id,
+      film_id: films[11].id,
+    },
+    {
+      user_id: user5.id,
+      film_id: films[10].id,
+    },
+    {
+      user_id: user5.id,
+      film_id: films[6].id,
+    },
+    {
+      user_id: user5.id,
+      film_id: films[8].id,
+    },
+    {
+      user_id: user5.id,
+      film_id: films[7].id,
+    }
+  ]
+)
 
 
-# rates = Rate.create!([
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 5
-#   },
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 4
-#   },
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 3
-#   },
-#   {
-#     user_id: User.first.id,
-#     film_id: films[2].id,
-#     comments: "Awesome shit man!!!!!",
-#     score: 5
-#   }
-# ])
+
+rates = Rate.create!([
+  {
+    user_id: User.first.id,
+    film_id: films[1].id,
+    comments: "Awesome shit man!!!!!",
+    score: 5
+  },
+  {
+    user_id: User.first.id,
+    film_id: films[0].id,
+    comments: "Best batman movie ever",
+    score: 4
+  },
+  {
+    user_id: User.first.id,
+    film_id: films[2].id,
+    comments: "I did not understand anything about this film",
+    score: 3
+  },
+  {
+    user_id: User.first.id,
+    film_id: films[5].id,
+    comments: "This is a great thriller. Would watch over and over",
+    score: 5
+  },
+  {
+      user_id: user2.id,
+      film_id: films[3].id,
+      comments: "Mesmerizing film. Cannot miss but might be a little slow for some",
+      score: 5
+    },
+    {
+      user_id: user2.id,
+      film_id: films[4].id,
+      comments: "A bunch of macho nonsense. Hated it",
+       score: 2
+    },
+    {
+      user_id: user2.id,
+      film_id: films[6].id,
+      comments: "Very solid film. A little slow at times, but it delivers at the end",
+      score: 4
+    },
+    {
+      user_id: user2.id,
+      film_id: films[7].id,
+      comments: "Great animation. It's a very cool mix between different genres",
+      score: 4
+    },
+    {
+      user_id: user2.id,
+      film_id: films[8].id,
+      comments: "I could sing these songs all day!!!",
+      score: 5
+    },
+    {
+      user_id: user3.id,
+      film_id: films[0].id,
+      comments: "To be honest, I prefer the old batman movies. Christian bale is not it",
+      score: 3
+    },
+    {
+      user_id: user3.id,
+      film_id: films[10].id,
+      comments: "Hitchcock is a master. Arguably one of his best films, and that's saying something",
+      score: 5
+    },
+    {
+      user_id: user3.id,
+      film_id: films[9].id,
+      comments: "Classic film. This one will endure throughout history",
+      score: 5
+    },
+    {
+      user_id: user3.id,
+      film_id: films[11].id,
+      comments: "I love Chaplin's charisma. Very entertaining despite it being silent",
+      score: 4
+    },
+    {
+      user_id: user3.id,
+      film_id: films[1].id,
+      comments: "Who doesn't love a great samurai film? Although this is kind of different!",
+      score: 4
+    },
+    {
+      user_id: user4.id,
+      film_id: films[7].id,
+      comments: "Boriiiiiing. But don't listen to me, I hate documentaries",
+      score: 1
+    },
+    {
+      user_id: user4.id,
+      film_id: films[2].id,
+      comments: "I don't know who said this could be a classic film",
+      score: 2
+    },
+    {
+      user_id: user4.id,
+      film_id: films[10].id,
+      comments: "It was okay. A little outdated for my taste",
+      score: 3
+    },
+    {
+      user_id: user5.id,
+      film_id: films[11].id,
+      comments: "I hate black and white movies. I was forced to watch this",
+      score: 1
+    },
+    {
+      user_id: user5.id,
+      film_id: films[10].id,
+      comments: "Despite being black and white, it had an interesting story",
+      score: 3
+    },
+    {
+      user_id: user5.id,
+      film_id: films[6].id,
+      comments: "What a great film! Jane Campion is the best director",
+      score: 5
+    },
+    {
+      user_id: user5.id,
+      film_id: films[8].id,
+      comments: "Bradley and Gaga had great chemistry. This is better than the original",
+      score: 4
+    },
+    {
+      user_id: user5.id,
+      film_id: films[7].id,
+      comments: "The ending was so touching. Really important piece of work",
+      score: 4
+    }
+])

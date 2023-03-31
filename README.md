@@ -5,10 +5,10 @@
 
 - Create a robust and smooth data flow with the help of useContext
 - Showcase the ability to link diverse types of files (image, video, etc) to your models with Active Storage
-- Closely replicate the behavior of a payment system with Google Pay 
+- Closely replicate the behavior of a payment system with Paypal 
 - Persist shopping carts with Local Storage
 
-While this project closely follows the practices and standards set for the Phase-4 Project on my Flatiron School's journey, the main difference set for this one would be the intent to break some of the boundaries that have been established. As developers, we need to always be in the lookout for new technologies that can improve our workspace. As such, the ability to read and implement features that we are not familiar with is an essential tool. This project tries to solve some of those challenges by taking advantage of technologies that I was not aware of such as useContext, Active Storage, Google Pay and Local Storage.
+While this project closely follows the practices and standards set for the Phase-4 Project on my Flatiron School's journey, the main difference set for this one would be the intent to break some of the boundaries that have been established. As developers, we need to always be in the lookout for new technologies that can improve our workspace. As such, the ability to read and implement features that we are not familiar with is an essential tool. This project tries to solve some of those challenges by taking advantage of technologies that I was not aware of such as useContext, Active Storage, Paypal and Local Storage.
 
 ## Setup
 
@@ -22,7 +22,7 @@ The project relies on npm and node.js capabilities. [ First, install these compo
 ```
 Locate the src folder and manually check that the package.json file counts with google pay, react-router-dom, and react-toastify under dependencies. If they did not install automatically, here are the places to manually add them:
 - React Router: https://www.npmjs.com/package/react-router
-- Google Pay: https://www.npmjs.com/package/@google-pay/button-react
+- React Paypal: https://www.npmjs.com/package/@paypal/react-paypal-js?activeTab=readme
 - Toasts: https://www.npmjs.com/package/react-toastify/v/8.0.0 (Make sure you are using version 8.0.0)
 
 Additionally, you need to install some features that will manage the backend side of things. Mac users tend to count with built-ins Ruby interpreters, but here's a guide for Microsoft users and outdated versions of Ruby: https://www.ruby-lang.org/en/downloads/. After updating your Ruby interpreter, you must also download Rails web framework:
@@ -39,6 +39,18 @@ Once everything is succesfully set up, open the terminal where you forked/cloned
  rails s
 ```
 This will activate the server capabilities offered by Rails. This will in essence work as your connection to the database/backend side of the project. In here, the user can check useful information as to how Rails operates under the hood. If there's any error that the backend wishes to notify the frontend about, they will also appear in detail on this console.
+
+Some users, films, and ratings have been created beforehand in order to test the application's functionality. In order to get them started, you must open another terminal where you forked/cloned this repository and type this command:
+```sh
+ rails db:seed
+```
+This will ensure that those premade materials will get created. **It is worth nothing that the payment system of this application is not intended for real life purposes, which means that in order to avoid the usage of real cards, some testing cards have been provided by Paypal**. Down below, a list of cards will be provided. You must enter the numbers exactly as they are described, but the expiration date and CSC number can be anything:
+- 4005519200000004
+- 4012000033330026
+- 4012000077777777
+- 4012888888881881
+- 4915805038587737
+
 
 In addition, the user needs to open a new terminal. The user must also locate the same folder that contains this repository, but this time the user must get into the /client folder. Once you have locatated this folder and opened it, type in the following command:
 
@@ -66,7 +78,7 @@ This section will allow you to search for available films on sale. There is a fi
 When you are browsing through the films, they will display on the left the title, the average rating given by users, and a synopsis for it. On the right, each film will count with a poster image. If you hover over the image, you will find additional information such as the director's name, the year it was released, the genre and runtime of the film. Lastly, on the bottom left, there will be "add to cart" button that will start processing your future purchases. Right next to it, you can look at the film's price. If you select a certain film succesfully, you should see a Toast notification on the top center indicating that it was succesfully added to your cart. You can go to any other page or refresh this page as many times as you like, but the films added to your cart will be persisted thanks to the magic of local storage. 
 
 **Cart**
-This is where you finalize your purchases. After selecting the films that you wish to buy from the browse section, you must head over to this section. Before paying, you can delete a specific film that you do not want to purchase anymore, or delete the whole cart if you wish as well. Once you are ready to buy your films, click on the Google Pay button. This feature will securely recollect data regarding your gmail addresses, credit/debit cards, and physical address. If the purchase can be successfully processed according to Google's server, it will return a JSON object that the project runs through the backend in order to finalize the purchase and create the according model associations. **The address in the form of payment must match the one linked to the website's profile.**
+This is where you finalize your purchases. After selecting the films that you wish to buy from the browse section, you must head over to this section. Before paying, you can delete a specific film that you do not want to purchase anymore, or delete the whole cart if you wish as well. Once you are ready to buy your films, click on any of the payment buttons. All of the data is processed and protected by Paypal. If the purchase can be successfully processed according to Paypal's server, it will return a JSON object that the project runs through the backend in order to finalize the purchase and create the according model associations. **The address in the form of payment must match the one linked to the website's profile.**
 
 **History**
 This page will display your purchase history. You must have already gone through the whole process of selecting a film through browse and then paying for it through your cart in order to see any information displayed in here. Once you do, it will show you the amount of times you have bought the same film and your rating (if you have provided one for it already). Additionally, you will be able to either delete or change the rating you provided for each film through this page. 
