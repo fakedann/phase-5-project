@@ -11,7 +11,6 @@ function Login() {
 
   if (user) return (
     <div className="welcomeCard">
-      <img src={user.image_url} alt="Waiting" />
       <h1>{user.fullname}</h1>
       <p className="title">{user.address}</p>
       <p>{user.email}</p>

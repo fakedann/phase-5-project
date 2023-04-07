@@ -8,6 +8,7 @@ function Browse(){
   const [films, setFilms] = useState([])
   const [filterView, setView] = useState('1')
   const [errors, setErrors] = useState([]);
+ 
 
   useEffect(() => {
    if(user){

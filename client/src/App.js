@@ -1,6 +1,6 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom"
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 import Login from './Login';
 import Browse from './Browse';
 import Cart from './Cart';
@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 
-export const MyContext = createContext()
+export const MyContext = createContext({hola: 'si'})
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -54,4 +54,4 @@ function App() {
   );
 }
 
-export default React.memo(App);
+export default App;

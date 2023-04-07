@@ -8,55 +8,45 @@ Film.destroy_all
 Rate.destroy_all
 Purchase.destroy_all
 
-user1 = User.new({
+user1 = User.create!({
   fullname: "Alejandra Zepeda",
   email: "alezepeda@gmail.com",
   password: "123456",
   address: "4000 NW 27TH TR",
 
 })
-user1.image.attach(io: File.open('./client/pictures/ale.jpg'), filename: 'ale.jpg' )
-user1.save
 
-user2 = User.new({
+user2 = User.create!({
   fullname: "Daniel Escalona",
   email: "daniel07escalona@gmail.com",
   password: "123456",
   address: "4924 NW 28TH PL",
 
 })
-user2.image.attach(io: File.open('./client/pictures/daniel.jpg'), filename: 'daniel.jpg' )
-user2.save
 
-user3 = User.new({
+user3 = User.create!({
   fullname: "Alexander Romero",
   email: "alex01romero@gmail.com",
   password: "123456",
   address: "3789 2nd Ave",
 
 })
-user3.image.attach(io: File.open('./client/pictures/alex.jpg'), filename: 'alex.jpg' )
-user3.save
 
-user4 = User.new({
+user4 = User.create!({
   fullname: "Adam Leon",
   email: "adammleonn@gmail.com",
   password: "123456",
   address: "1234 South Ridgeview St",
 
 })
-user4.image.attach(io: File.open('./client/pictures/adam.jpg'), filename: 'adam.jpg' )
-user4.save
 
-user5 = User.new({
+user5 = User.create!({
   fullname: "Annalise Bourn",
   email: "annarbourn@gmail.com",
   password: "123456",
   address: "80 Glenridge Ave",
 
 })
-user5.image.attach(io: File.open('./client/pictures/anna.jpg'), filename: 'anna.jpg' )
-user5.save
 
 
 films = Film.create!([

@@ -5,13 +5,9 @@ class UsersController < ApplicationController
   wrap_parameters format: []
 
   def create
-    if params[:user][:image] == "null"
-      render json: { errors: "You must select an image for your profile" }, status: :unauthorized
-    else
-      user = User.create!(user_params)
-      session[:user_id] = user.id
-      render json: user, status: :created
-    end
+    user = User.create!(user_params)
+    session[:user_id] = user.id
+    render json: user, status: :created
     
   end
 
@@ -45,7 +41,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password, :fullname, :image, :address)
+      params.require(:user).permit(:email, :password, :fullname, :address)
     end
 
     def render_unprocessable_entity(invalid)

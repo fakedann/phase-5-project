@@ -9,7 +9,6 @@ function SignUpForm(){
       fullname: '',
       address: ''
     });
-    const [avat, setAvat] = useState(null)
     const [errors, setErrors] = useState([]);
     const {setUser} = useContext(MyContext)
   
@@ -41,7 +40,6 @@ function SignUpForm(){
     function handleSubmit() {
       setErrors([]);
       const newUser = new FormData()
-      newUser.append("user[image]", avat)
       newUser.append("user[fullname]", formData.fullname)
       newUser.append("user[address", formData.address)
       newUser.append("user[email]", formData.email)
@@ -97,14 +95,6 @@ function SignUpForm(){
                   name="address"
                   onChange={handleChange}
                   value={formData.address}
-                />
-              </div>
-              <div className="formElement">
-                <label>Profile Picture:</label>
-                <input
-                  type="file"
-                  name="image"
-                  onChange={(e) => setAvat(e.target.files[0])}
                 />
               </div>
               <button id="submit" type="submit">Submit</button>

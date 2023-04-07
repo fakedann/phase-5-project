@@ -3,12 +3,13 @@ import {MyContext} from "./App"
 
 function LoginForm() {
 
+  const {user, setUser} = useContext(MyContext)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
   const [errors, setErrors] = useState([]);
-  const {user, setUser} = useContext(MyContext)
+  
 
   function handleChange(event) {
     const name = event.target.name;
@@ -59,9 +60,7 @@ function LoginForm() {
                 />
               </div>
               <button id="submit" type="submit">Submit</button>
-              <div>{errors.map((err) => (
-                <p key={err}>{err}</p>
-              ))}</div>
+              <p>{errors}</p>
         </form>
   );
 }
