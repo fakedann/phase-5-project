@@ -4,7 +4,6 @@
 ## Features
 
 - Create a robust and smooth data flow with the help of useContext
-- Showcase the ability to link diverse types of files (image, video, etc) to your models with Active Storage
 - Closely replicate the behavior of a payment system with Paypal 
 - Persist shopping carts with Local Storage
 
@@ -28,10 +27,6 @@ Locate the src folder and manually check that the package.json file counts with 
 Additionally, you need to install some features that will manage the backend side of things. Mac users tend to count with built-ins Ruby interpreters, but here's a guide for Microsoft users and outdated versions of Ruby: https://www.ruby-lang.org/en/downloads/. After updating your Ruby interpreter, you must also download Rails web framework:
 
 - Rails: https://guides.rubyonrails.org/v5.1/getting_started.html#installing-rails
-
-This project relies on a powerful tool called Active Storage. It allows Rails to link models with complex data files such as images and videos. In order for it to work, you must follow specific instructions to set it up. By forking and cloning this repository, the gemfile and all of the other files should be ready to go. However, in the case that they are not, here are some helpful resources to manually set it up:
-- https://www.youtube.com/watch?v=_rLMRd676-I&t=1170s&ab_channel=Deanin
-- https://guides.rubyonrails.org/active_storage_overview.html
 
 Once everything is succesfully set up, open the terminal where you forked/cloned this repository and type in the following command:
 
@@ -69,7 +64,6 @@ This page handles the logging and signing features. When you are creating a new 
 - Passwords must be at least 6 characters long
 - Names cannot contain numbers or symbols
 - Address cannot contain symbols
-- You must select an image for your profile
 
 useContext is a hook that allows users to enable global values to be shared across your application in an efficient manner. Mainly, the information regarding the logged in user is shared throughout all of the application thanks to this tool.
 
