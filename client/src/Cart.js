@@ -128,12 +128,19 @@ function Cart(){
               </tbody>
           </table>
           <button id="cartclear" onClick={clearCart}>Clear cart</button>
-          { Number((total.reduce((a, b) => a + b, 0)).toFixed(2)) > 0 ? <PayPalButtons createOrder={(data, actions) => {
+          { Number((total.reduce((a, b) => a + b, 0)).toFixed(2)) > 0 ? <PayPalButtons style={{ color: "gold",
+          layout: "horizontal",
+          height: 48,
+          tagline: false,
+          shape: "pill"
+
+          }}
+          createOrder={(data, actions) => {
                     return actions.order.create({
                         purchase_units: [
                             {
                                 amount: {
-                                    value: "0.01",
+                                    value: total.reduce((a, b) => a + b, 0).toFixed(2),
                                 },
                             },
                         ],
@@ -142,7 +149,7 @@ function Cart(){
                 onApprove={(data, actions) => {
                     return actions.order.capture().then((details) => {
                         
-                        sendingPayment(details.payer.address.address_line_1)
+                        sendingPayment(details.purchase_units[0].shipping.address.address_line_1)
             
                     });
                 }} /> : null}

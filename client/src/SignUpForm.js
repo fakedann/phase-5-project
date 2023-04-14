@@ -37,7 +37,8 @@ function SignUpForm(){
       }
     }
   
-    function handleSubmit() {
+    function handleSubmit(event) {
+      event.preventDefault()
       setErrors([]);
       const newUser = new FormData()
       newUser.append("user[fullname]", formData.fullname)
@@ -52,7 +53,10 @@ function SignUpForm(){
       if (r.ok) {
         r.json().then((resp) => setUser(resp) );
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => {
+          console.log(err)
+          setErrors(err.errors)
+        });
       }
     });
     }
@@ -60,7 +64,7 @@ function SignUpForm(){
     return (
       <div className="mainBox">
         <div id="aboutBox">
-            <form onSubmit={checkSubmit}>
+            <form onSubmit={handleSubmit}>
             <div className="formElement">
                 <label>Email:</label>
                 <input
@@ -99,6 +103,9 @@ function SignUpForm(){
               </div>
               <button id="submit" type="submit">Submit</button>
               <p>{errors}</p>
+              {errors.includes('Fullname')? <p>The name field only accepts letters.</p>: null}
+              {errors.includes('Address')? <p>The address field only accepts letters and numbers.</p>: null}
+              {errors.includes('Email')? <p> Make sure that you follow standard formats for email addresses</p>: null}
             </form>
         </div>
       </div>  

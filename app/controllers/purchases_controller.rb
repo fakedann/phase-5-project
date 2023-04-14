@@ -13,7 +13,7 @@ class PurchasesController < ApplicationController
       end
       render json: transactions, status: :created
     else
-      render json: {errors: "We couldn't process your payment. Make sure that your payment form has the same address listed as the one for your profile."}, status: :unauthorized
+      render json: {errors: "We couldn't process your payment. Make sure that your SHIPPING ADDRESS matches exactly with the address selected for your profile"}, status: :unauthorized
     end
 
   end

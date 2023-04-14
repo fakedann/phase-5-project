@@ -39,7 +39,7 @@ function App() {
   return (
     <MyContext.Provider value={globalValues}>
       <div className="app">
-      <PayPalScriptProvider options={{ "client-id": "test" }}>
+      <PayPalScriptProvider options={{ "client-id": "AbwEURHgLqESokUNcepDi_EGxDK3oosFm4zNUIALGHpnoA9Jg5FW4-ZF7gefdFor3nVba0C4hQJdbBuk" }}>
         <Routes>
           <Route exact path="/" element={<Login />}/>
           <Route exact path="/browse" element={<Browse />}/>
