@@ -63,6 +63,6 @@ class RatesController < ApplicationController
   private
 
     def render_unprocessable_entity(invalid)
-      render json: { errors: errors: invalid.record.errors.full_messages.to_sentence}, status: :unprocessable_entity
+      render json: { errors: invalid.record.errors.full_messages.to_sentence}, status: :unprocessable_entity
     end
 end
