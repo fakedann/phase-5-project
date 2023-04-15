@@ -10,7 +10,6 @@ function UpdateRate({rate, goBack}){
   });
   const [errors, setErrors] = useState(['']);
   const [submmited, setSubmitted] = useState(false)
-  console.log(rate)
  
 
   function handleSubmit(e){
